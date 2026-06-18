@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A detailed guide to Mock Loc — stationary pins, playlists, automatic itineraries, sync, notifications, and developer tools for Android GPS mocking.">
+  <title>Mock Loc — Complete Feature Guide</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/article.css">
+</head>
+<body>
+  <div class="article-page">
+    <header class="topbar">
+      <div class="topbar-inner">
+        <a class="back-link" href="index.html">← All articles</a>
+        <div class="logo">
+          <span class="logo-mark" aria-hidden="true"></span>
+          <span class="logo-text">MockLoc</span>
+        </div>
+        <span class="read-time">12 min read</span>
+      </div>
+    </header>
+
+    <section class="hero">
+      <span class="hero-badge">Feature deep dive</span>
+      <h1>Mock Loc — your location testing buddy</h1>
+      <p class="hero-lead">
+        Mock Loc is an Android app built for researchers, QA engineers, and developers who need
+        precise control over GPS. Fake where you are — hold still, hop between pins, or travel
+        along a realistic route — while other apps read your mocked coordinates.
+      </p>
+      <div class="hero-tags">
+        <span class="hero-tag">Android</span>
+        <span class="hero-tag">GPS mocking</span>
+        <span class="hero-tag">Field research</span>
+        <span class="hero-tag">QA &amp; testing</span>
+      </div>
+    </section>
+
+    <div class="layout">
+      <nav class="toc" aria-label="Table of contents">
+        <p class="toc-title">On this page</p>
+        <ul>
+          <li><a href="#overview">Overview</a></li>
+          <li><a href="#three-modes">Three mocking modes</a></li>
+          <li><a href="#stationary">Stationary pointer</a></li>
+          <li><a href="#playlist">Stationary playlist</a></li>
+          <li><a href="#itinerary">Automatic itinerary</a></li>
+          <li><a href="#notifications">Notification controls</a></li>
+          <li><a href="#account-sync">Account &amp; sync</a></li>
+          <li><a href="#settings">Settings &amp; maps</a></li>
+          <li><a href="#developers">For developers</a></li>
+          <li><a href="#summary">Quick comparison</a></li>
+        </ul>
+      </nav>
+
+      <article class="content">
+        <section id="overview">
+          <h2>What Mock Loc does</h2>
+          <div class="intro-box">
+            <p>
+              <strong>Tagline:</strong> <em>Your location testing buddy.</em> Mock Loc lets you
+              choose how apps see your location — not where you physically are. Pin a spot on the
+              map, queue multiple stops, or simulate movement along a drawn route with custom speed
+              and GPS accuracy.
+            </p>
+          </div>
+          <p>
+            Whether you are validating a delivery app in another city, testing geo-fenced features,
+            or running market-research scenarios in the field, Mock Loc gives you a polished map-first
+            workflow instead of fiddling with developer options alone.
+          </p>
+          <p>
+            The home screen organizes everything around one idea: <strong>Fake your GPS.</strong>
+            Pick how apps should see your location, then dive into the mode that matches your test.
+          </p>
+        </section>
+
+        <section id="three-modes">
+          <h2>Three core mocking modes</h2>
+          <p>
+            Mock Loc’s power comes from three complementary modules. Each one solves a different
+            testing pattern — from standing still to cycling pins to moving along a path.
+          </p>
+
+          <div class="feature-grid">
+            <div class="feature-card feature-card--yellow">
+              <span class="feature-icon" aria-hidden="true">📍</span>
+              <h3>Stationary pointer</h3>
+              <p>Hold one fixed GPS pin. Apps see you at a single spot with tunable accuracy.</p>
+            </div>
+            <div class="feature-card feature-card--green">
+              <span class="feature-icon" aria-hidden="true">🔁</span>
+              <h3>Stationary playlist</h3>
+              <p>Cycle through saved pins automatically — each stop gets its own time and accuracy.</p>
+            </div>
+            <div class="feature-card feature-card--blue">
+              <span class="feature-icon" aria-hidden="true">🛣️</span>
+              <h3>Automatic itinerary</h3>
+              <p>Draw routes on the map and simulate realistic travel at the speed you choose.</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="stationary">
+          <h2>Stationary pointer — pin, tune, replay</h2>
+          <p>
+            The stationary pointer is Mock Loc’s foundation. Drop a pin anywhere on the map, save it
+            to your history, adjust GPS accuracy, mark favourites, and replay the same spot whenever
+            you need it.
+          </p>
+
+          <div class="detail-block detail-block--yellow">
+            <h3>What you can do</h3>
+            <ul>
+              <li>Place a pin on the map and mock your device GPS at that exact coordinate.</li>
+              <li>Save locations with names and descriptions for quick reuse.</li>
+              <li>Tune accuracy so the mocked fix looks tight (precise) or loose (realistic urban GPS).</li>
+              <li>Favourite important pins and browse your stationary history tray.</li>
+              <li>Play, pause, and stop mocking from the in-app player or notification shade.</li>
+            </ul>
+            <div class="chip-row">
+              <span class="chip chip--yellow">Pin point</span>
+              <span class="chip chip--yellow">Accuracy</span>
+              <span class="chip chip--yellow">History</span>
+              <span class="chip chip--yellow">Favourites</span>
+            </div>
+          </div>
+
+          <p>
+            When mocking runs, Mock Loc keeps a foreground service alive so coordinates stay stable.
+            Your actual phone location is stored separately in Settings → Map defaults — place search
+            and nearby results still use your real position while you mock somewhere else.
+          </p>
+        </section>
+
+        <section id="playlist">
+          <h2>Stationary playlist — multi-pin automation</h2>
+          <p>
+            Need to simulate visiting several locations in sequence without manual taps? Build a
+            <strong>stationary playlist</strong>: a ordered queue of saved pins that Mock Loc hops
+            through automatically.
+          </p>
+
+          <div class="detail-block detail-block--green">
+            <h3>Playlist highlights</h3>
+            <ul>
+              <li>Create pin queues with per-point dwell time and accuracy settings.</li>
+              <li>Preview all pins on the map before you hit play.</li>
+              <li>Enable loop mode to repeat the entire sequence.</li>
+              <li>Switch tray views — grid, comfy, list — to match how you browse playlists.</li>
+              <li>Edit playlists: add, remove, reorder points, rename, and share with teammates.</li>
+            </ul>
+            <div class="chip-row">
+              <span class="chip chip--green">Multi-pin</span>
+              <span class="chip chip--green">Auto cycle</span>
+              <span class="chip chip--green">Loop</span>
+              <span class="chip chip--green">Per-point timing</span>
+            </div>
+          </div>
+
+          <h3>Typical workflow</h3>
+          <div class="flow">
+            <div class="flow-step">
+              <span class="flow-num">1</span>
+              <div>
+                <strong>Create a playlist</strong>
+                <p>Give it a name and add saved stationary pins as stops.</p>
+              </div>
+            </div>
+            <div class="flow-step">
+              <span class="flow-num">2</span>
+              <div>
+                <strong>Set timing &amp; accuracy</strong>
+                <p>Configure how long each pin is held and how precise the GPS fix appears.</p>
+              </div>
+            </div>
+            <div class="flow-step">
+              <span class="flow-num">3</span>
+              <div>
+                <strong>Press play</strong>
+                <p>Mock Loc cycles through the queue. Control playback from notifications anytime.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="itinerary">
+          <h2>Automatic itinerary — moving routes</h2>
+          <p>
+            When your test needs movement — not just fixed pins — use <strong>Automatic itinerary</strong>.
+            Draw route segments on the map, set travel speed and accuracy per segment, and simulate
+            a trip that other apps believe you are taking.
+          </p>
+
+          <div class="detail-block detail-block--blue">
+            <h3>Route building</h3>
+            <ul>
+              <li>Create named itineraries and add multiple route segments.</li>
+              <li>Draw paths on the map or enter latitude/longitude manually.</li>
+              <li>Compute driving or walking routes via directions APIs, with fallback to direct lines.</li>
+              <li>Customize each segment: speed (0–100 km/h), accuracy (0–100 m), and route colour.</li>
+              <li>Highlight individual segments, edit while stopped, and favourite key routes.</li>
+            </ul>
+            <div class="chip-row">
+              <span class="chip chip--blue">Draw route</span>
+              <span class="chip chip--blue">Simulate</span>
+              <span class="chip chip--blue">Multi-segment</span>
+              <span class="chip chip--blue">Speed control</span>
+            </div>
+          </div>
+
+          <h3>Playback experience</h3>
+          <p>
+            During playback, the notification shows progress — current segment, start, destination,
+            and live speed/accuracy. The player displays percentage progress so you always know where
+            you are along the route. Stop the itinerary before editing segments; Mock Loc protects
+            running sessions from accidental changes.
+          </p>
+        </section>
+
+        <section id="notifications">
+          <h2>Notification controls — mock without reopening the app</h2>
+          <p>
+            Mock Loc is designed for long-running tests. While stationary, playlist, or itinerary
+            playback runs in the background, a persistent notification gives you full transport
+            controls: <strong>play, pause, stop, previous, next, and favourite</strong> — without
+            switching back to the app.
+          </p>
+
+          <div class="feature-grid">
+            <div class="feature-card feature-card--purple">
+              <span class="feature-icon" aria-hidden="true">▶️</span>
+              <h3>Quick control</h3>
+              <p>Start and stop mocking from the notification shade in one tap.</p>
+            </div>
+            <div class="feature-card feature-card--cyan">
+              <span class="feature-icon" aria-hidden="true">🔔</span>
+              <h3>Always on</h3>
+              <p>Foreground service keeps GPS mocking reliable while you use other apps.</p>
+            </div>
+          </div>
+
+          <p>
+            On first launch, Mock Loc walks you through location and notification permissions.
+            Both are required for background mocking and shade controls to work properly.
+          </p>
+        </section>
+
+        <section id="account-sync">
+          <h2>Account, cloud sync &amp; data safety</h2>
+          <p>
+            Sign in to sync your stationary points, playlists, and itineraries across devices.
+            Mock Loc supports email/phone login, Google sign-in, and account creation with optional
+            developer profile fields.
+          </p>
+
+          <div class="detail-block detail-block--purple">
+            <h3>What syncs when you log in</h3>
+            <ul>
+              <li><strong>Stationary points</strong> — saved pins and history.</li>
+              <li><strong>Stationary playlists</strong> — pin queues and their settings.</li>
+              <li><strong>Itineraries</strong> — multi-segment route plans.</li>
+            </ul>
+            <p>
+              After login, a step-by-step sync screen collects each module so you can see progress
+              in real time. Keep the app open — it usually finishes in a few seconds.
+            </p>
+          </div>
+
+          <h3>Background auto sync</h3>
+          <p>
+            In Settings → Developers → General, enable <strong>Auto sync in background</strong>.
+            Mock Loc uploads unsaved locations and playlists even when the app is closed. Choose
+            your check interval:
+          </p>
+          <ul>
+            <li>Every 30 minutes, 1 hour, 4 hours (recommended default), 6 hours, 12 hours, or 24 hours.</li>
+            <li>When logged out but data is pending, you get a reminder notification to sign in.</li>
+            <li>Android may batch checks slightly to save battery — notifications must be allowed.</li>
+          </ul>
+        </section>
+
+        <section id="settings">
+          <h2>Settings, maps &amp; personalization</h2>
+          <p>
+            Settings is organized into focused tabs so you can tune Mock Loc without hunting through
+            menus.
+          </p>
+
+          <div class="feature-grid">
+            <div class="feature-card feature-card--red">
+              <span class="feature-icon" aria-hidden="true">👤</span>
+              <h3>Account</h3>
+              <p>Profile, login state, guest mode, and sign-out. Sync status at a glance.</p>
+            </div>
+            <div class="feature-card feature-card--yellow">
+              <span class="feature-icon" aria-hidden="true">🗺️</span>
+              <h3>Google Map</h3>
+              <p>Map defaults, appearance, and your saved actual location for search context.</p>
+            </div>
+            <div class="feature-card feature-card--green">
+              <span class="feature-icon" aria-hidden="true">📌</span>
+              <h3>Stationary / Playlist / Itinerary</h3>
+              <p>Module-specific defaults so new pins, queues, and routes open the way you prefer.</p>
+            </div>
+          </div>
+
+          <h3>Map defaults worth knowing</h3>
+          <p>
+            Mock Loc stores your phone’s <strong>real GPS</strong> separately from the mocked position.
+            Place search and Google APIs use your actual coordinates for nearby results while you
+            mock a different spot on the map. Refresh it in Settings when mocking is off for an
+            accurate baseline.
+          </p>
+        </section>
+
+        <section id="developers">
+          <h2>For developers — diagnostics &amp; integrations</h2>
+          <p>
+            Mock Loc includes a password-protected <strong>Developers</strong> tab for power users
+            building on top of the Research-Work API ecosystem.
+          </p>
+
+          <div class="dev-callout">
+            <span class="dev-callout-label">Developer corner</span>
+            <ul>
+              <li><strong>API environment picker</strong> — override the base URL from Firebase Remote Config (debug builds can point at a local Research-Work-API server).</li>
+              <li><strong>Admin notifications</strong> — opt in to push usage events to the admin dashboard for monitoring field activity.</li>
+              <li><strong>OneSignal diagnostics</strong> — inspect external ID sync, audience tags, and re-sync when push targeting drifts.</li>
+              <li><strong>Analytics events</strong> — the app emits structured <code>ml_*</code> Firebase events (playback, edits, sync, auth) visible in the adminweb usage report.</li>
+              <li><strong>Mock coins</strong> — session-based usage metering for play actions; developers on unlimited plans can mock freely.</li>
+            </ul>
+          </div>
+
+          <p>
+            Debug builds expose extra tooling: test crash reporting to Crashlytics, API base URL
+            overrides via <code>local.properties</code>, and verbose sync scheduling feedback.
+            Release builds use Firebase Remote Config for production API endpoints.
+          </p>
+        </section>
+
+        <section id="summary">
+          <h2>Quick comparison — which mode should I use?</h2>
+          <table class="compare-table">
+            <thead>
+              <tr>
+                <th>Scenario</th>
+                <th>Best mode</th>
+                <th>Why</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>App should think you’re at one store</td>
+                <td>Stationary pointer</td>
+                <td>Single fixed pin with accuracy control</td>
+              </tr>
+              <tr>
+                <td>Visit 5 locations in order</td>
+                <td>Stationary playlist</td>
+                <td>Automated pin queue with timing</td>
+              </tr>
+              <tr>
+                <td>Simulate a drive or walk</td>
+                <td>Automatic itinerary</td>
+                <td>Moving GPS along drawn route segments</td>
+              </tr>
+              <tr>
+                <td>Long test without opening the app</td>
+                <td>Any mode + notifications</td>
+                <td>Background playback with shade controls</td>
+              </tr>
+              <tr>
+                <td>Share setups across a team</td>
+                <td>Account + sync</td>
+                <td>Cloud backup of pins, playlists, routes</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="detail-block detail-block--yellow" style="margin-top: 1.5rem;">
+            <h3>Bottom line</h3>
+            <p style="margin-bottom: 0;">
+              Mock Loc turns Android GPS mocking into a visual, repeatable workflow. Start with a
+              stationary pin, graduate to playlists for multi-stop tests, and use itineraries when
+              movement matters. Sign in to keep everything backed up, enable background sync for
+              peace of mind, and control it all from your notification shade while you test other apps.
+            </p>
+          </div>
+        </section>
+      </article>
+    </div>
+
+    <footer class="article-footer">
+      <p><a href="index.html">← Back to all MockLoc articles</a></p>
+      <p style="margin-top: 0.5rem;">&copy; MockLoc · Hosted on GitHub Pages</p>
+    </footer>
+  </div>
+</body>
+</html>
