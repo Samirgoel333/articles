@@ -798,3 +798,301 @@ a {
     height: 2.25rem;
   }
 }
+
+/* Phone mockup visuals (quick-start articles from mockuserweb) */
+.phone-steps {
+  display: grid;
+  gap: 1.5rem;
+  margin-top: 1.25rem;
+}
+
+.phone-step {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 220px;
+  gap: 1.25rem;
+  align-items: center;
+  padding: 1.25rem;
+  border-radius: var(--radius);
+  border: 1px solid rgba(42, 42, 42, 0.06);
+  background: var(--white);
+  box-shadow: 0 10px 28px var(--shadow);
+}
+
+.phone-step__eyebrow {
+  display: inline-block;
+  margin-bottom: 0.35rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--google-blue);
+}
+
+.phone-step h3 {
+  margin: 0 0 0.45rem;
+  font-size: 1.1rem;
+}
+
+.phone-step p {
+  margin: 0;
+  font-size: 0.94rem;
+}
+
+.phone-mock {
+  width: 100%;
+  max-width: 220px;
+  margin: 0 auto;
+  padding: 10px;
+  border-radius: 28px;
+  background: linear-gradient(145deg, #2a2a2a, #111);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.22);
+}
+
+.phone-mock__screen {
+  overflow: hidden;
+  border-radius: 20px;
+  background: #f5f5f7;
+}
+
+.phone-mock__status {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.45rem 0.7rem;
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: #333;
+  background: #ececf0;
+}
+
+.phone-mock__header {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.55rem 0.7rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #222;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.phone-mock__back {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-left: 2px solid #666;
+  border-bottom: 2px solid #666;
+  transform: rotate(45deg);
+}
+
+.phone-mock__rows {
+  display: grid;
+  gap: 0.35rem;
+  padding: 0.7rem;
+}
+
+.phone-mock__row {
+  height: 0.55rem;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.phone-mock__row--highlight {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  height: auto;
+  min-height: 2.6rem;
+  padding: 0.55rem 0.65rem;
+  border: 1px solid rgba(255, 226, 0, 0.55);
+  border-radius: 12px;
+  background: linear-gradient(135deg, #fffef0, #fff8c8);
+}
+
+.phone-mock__row--highlight strong {
+  display: block;
+  font-size: 0.68rem;
+  line-height: 1.25;
+  color: #222;
+}
+
+.phone-mock__row--highlight small {
+  display: block;
+  margin-top: 0.15rem;
+  font-size: 0.58rem;
+  color: #666;
+}
+
+.phone-mock__tap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.35rem;
+  height: 1.35rem;
+  flex-shrink: 0;
+  border-radius: 50%;
+  font-size: 0.62rem;
+  font-weight: 800;
+  color: #171717;
+  background: var(--yellow);
+}
+
+.phone-mock--map .phone-mock__map {
+  position: relative;
+  height: 140px;
+  background:
+    linear-gradient(180deg, rgba(66, 133, 244, 0.12), rgba(52, 168, 83, 0.1)),
+    #e8f0e8;
+}
+
+.phone-mock__grid {
+  position: absolute;
+  inset: 12%;
+  border-radius: 8px;
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+  background-size: 14px 14px;
+}
+
+.phone-mock__pin {
+  position: absolute;
+  top: 42%;
+  left: 54%;
+  width: 14px;
+  height: 14px;
+  border-radius: 50% 50% 50% 0;
+  background: var(--google-red);
+  transform: rotate(-45deg);
+  box-shadow: 0 0 0 6px rgba(234, 67, 53, 0.18);
+}
+
+.phone-mock__touch-ring {
+  position: absolute;
+  top: 34%;
+  left: 46%;
+  width: 42px;
+  height: 42px;
+  border: 2px solid rgba(255, 226, 0, 0.75);
+  border-radius: 50%;
+}
+
+.phone-mock__sheet {
+  padding: 0.65rem 0.75rem 0.8rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  background: #fff;
+}
+
+.phone-mock__handle {
+  display: block;
+  width: 2rem;
+  height: 0.22rem;
+  margin: 0 auto 0.55rem;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.12);
+}
+
+.phone-mock__sheet-title {
+  font-size: 0.68rem;
+  font-weight: 800;
+  color: #222;
+}
+
+.phone-mock__sheet-sub {
+  display: block;
+  margin-top: 0.15rem;
+  font-size: 0.58rem;
+  color: #777;
+}
+
+.phone-mock__coords {
+  margin-top: 0.55rem;
+  padding: 0.45rem 0.55rem;
+  border-radius: 10px;
+  background: #f4f4f6;
+  font-size: 0.58rem;
+}
+
+.phone-mock__coords strong {
+  display: block;
+  margin-top: 0.15rem;
+  font-size: 0.66rem;
+  color: #222;
+}
+
+.phone-mock__actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.45rem;
+  margin-top: 0.55rem;
+  font-size: 0.64rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.phone-mock__actions span {
+  padding: 0.45rem;
+  border-radius: 10px;
+  background: #f0f0f2;
+  color: #666;
+}
+
+.phone-mock__actions strong {
+  padding: 0.45rem;
+  border-radius: 10px;
+  background: var(--yellow);
+  color: #171717;
+}
+
+.checklist-visual {
+  display: grid;
+  gap: 0.65rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.checklist-visual li {
+  display: grid;
+  grid-template-columns: 1.4rem 1fr;
+  gap: 0.65rem;
+  align-items: start;
+  font-size: 0.95rem;
+}
+
+.checklist-visual li::before {
+  content: "✓";
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.4rem;
+  height: 1.4rem;
+  border-radius: 50%;
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: #1e6b34;
+  background: rgba(52, 168, 83, 0.18);
+}
+
+.related-guide {
+  margin-top: 1rem;
+  padding: 1rem 1.1rem;
+  border-radius: var(--radius);
+  background: linear-gradient(135deg, rgba(66, 133, 244, 0.08), rgba(52, 168, 83, 0.08));
+  border: 1px solid rgba(66, 133, 244, 0.18);
+  font-size: 0.92rem;
+}
+
+.related-guide a {
+  font-weight: 700;
+  color: var(--google-blue);
+}
+
+@media (max-width: 760px) {
+  .phone-step {
+    grid-template-columns: 1fr;
+  }
+
+  .phone-mock {
+    max-width: 260px;
+  }
+}

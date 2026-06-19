@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Quick start: mock any fixed GPS location in Mock Loc using Stationary Pointer and a long press on the map.">
+  <title>Stationary Pointer Long Press — Quick Start</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/article.css">
+</head>
+<body>
+  <div class="article-page">
+    <header class="topbar">
+      <div class="topbar-inner">
+        <a class="back-link" href="index.html">← All articles</a>
+        <div class="logo">
+          <span class="logo-mark" aria-hidden="true"></span>
+          <span class="logo-text">MockLoc</span>
+        </div>
+        <span class="read-time">5 min read</span>
+      </div>
+    </header>
+
+    <section class="hero">
+      <span class="hero-badge">Quick start · Stationary Pointer</span>
+      <h1>Mock any location with a long press on the map</h1>
+      <p class="hero-lead">
+        Stationary Pointer is the fastest way to place your GPS at one fixed spot. Just long press
+        the map, confirm the coordinates, and Mock Loc starts using that point as your device
+        location.
+      </p>
+      <div class="hero-tags">
+        <span class="hero-tag">Long press</span>
+        <span class="hero-tag">Fixed GPS</span>
+        <span class="hero-tag">Quick start</span>
+      </div>
+    </section>
+
+    <div class="layout">
+      <nav class="toc" aria-label="Table of contents">
+        <p class="toc-title">On this page</p>
+        <ul>
+          <li><a href="#what-it-does">What this mode does</a></li>
+          <li><a href="#steps">Four quick steps</a></li>
+          <li><a href="#after-mock">After you tap Mock</a></li>
+          <li><a href="#tips">Quick tips</a></li>
+          <li><a href="#full-guide">Need more detail?</a></li>
+        </ul>
+      </nav>
+
+      <article class="content">
+        <section id="what-it-does">
+          <h2>One selected point, held steady</h2>
+          <p>
+            Unlike a route or playlist, Stationary Pointer does not move through many places. It
+            keeps your mock GPS at the exact point you choose until you press Stop.
+          </p>
+
+          <div class="feature-grid">
+            <div class="feature-card feature-card--yellow">
+              <span class="feature-icon" aria-hidden="true">📌</span>
+              <h3>Best for one-place testing</h3>
+              <p>Test check-ins, local search results, delivery areas, dating apps, games, or any workflow that depends on one fixed GPS position.</p>
+            </div>
+            <div class="feature-card feature-card--green">
+              <span class="feature-icon" aria-hidden="true">⚡</span>
+              <h3>No typing required</h3>
+              <p>Long press is useful when you can see the location on the map and want to start mocking without opening search or entering coordinates.</p>
+            </div>
+            <div class="feature-card feature-card--blue">
+              <span class="feature-icon" aria-hidden="true">💾</span>
+              <h3>Reusable from history</h3>
+              <p>When the point is new, Mock Loc saves it in your stationary history so you can mock the same place again later.</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="steps">
+          <h2>How to start a stationary mock</h2>
+          <p>
+            These steps match the current Mock Loc flow: long press selects the point, the bottom
+            sheet confirms it, and the Mock button starts playback.
+          </p>
+
+          <div class="flow">
+            <div class="flow-step">
+              <span class="flow-num">1</span>
+              <div>
+                <strong>Open Stationary Pointer</strong>
+                <p>From Mock Loc, open the Stationary Pointer module. You will see the map, the saved location tray, and quick actions like Search, My location, Manual, and Nearby.</p>
+              </div>
+            </div>
+            <div class="flow-step">
+              <span class="flow-num">2</span>
+              <div>
+                <strong>Long press anywhere on the map</strong>
+                <p>Touch and hold the exact place you want to mock. The app drops a marker at that coordinate and moves the camera to it. Long press works only when no stationary player is already running.</p>
+              </div>
+            </div>
+            <div class="flow-step">
+              <span class="flow-num">3</span>
+              <div>
+                <strong>Review the confirmation sheet</strong>
+                <p>Mock Loc shows a bottom sheet with the selected point name and coordinates, so you can confirm before the mock starts. If you cancel, the map and history tray return to the previous state.</p>
+              </div>
+            </div>
+            <div class="flow-step">
+              <span class="flow-num">4</span>
+              <div>
+                <strong>Tap Mock to start</strong>
+                <p>When you tap Mock, Mock Loc saves the new point to your history if needed and starts stationary location playback. The marker changes to a pulsing active state and player controls appear.</p>
+              </div>
+            </div>
+          </div>
+
+          <figure class="phone-mock phone-mock--map" style="margin-top: 1.5rem;" aria-label="Long press on map with confirmation sheet">
+            <div class="phone-mock__screen">
+              <div class="phone-mock__status"><span>9:41</span><span>LTE 100%</span></div>
+              <div class="phone-mock__map">
+                <span class="phone-mock__grid" aria-hidden="true"></span>
+                <span class="phone-mock__touch-ring" aria-hidden="true"></span>
+                <span class="phone-mock__pin" aria-hidden="true"></span>
+              </div>
+              <div class="phone-mock__sheet">
+                <span class="phone-mock__handle" aria-hidden="true"></span>
+                <span class="phone-mock__sheet-title">Mock Selected Point</span>
+                <small class="phone-mock__sheet-sub">Start mocking GPS at this place</small>
+                <div class="phone-mock__coords">
+                  <span>Coordinates</span>
+                  <strong>28.6329, 77.2812</strong>
+                </div>
+                <div class="phone-mock__actions">
+                  <span>Cancel</span>
+                  <strong>Mock</strong>
+                </div>
+              </div>
+            </div>
+          </figure>
+        </section>
+
+        <section id="after-mock">
+          <h2>What happens after you tap Mock</h2>
+          <p>
+            The point becomes active immediately. After you tap Mock, the app starts the stationary
+            point service for that saved point. The marker pulses on the map, the history tray hides,
+            and the player controls become available so you can stop the mock whenever you are done.
+          </p>
+          <div class="detail-block detail-block--green">
+            <h3>While mocking is running</h3>
+            <ul>
+              <li>The map marker pulses to show the active mock.</li>
+              <li>Player controls and a notification let you stop from anywhere.</li>
+              <li>Other apps read the mocked coordinates, not your physical location.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section id="tips">
+          <h2>Quick tips before you long press</h2>
+          <div class="detail-block detail-block--yellow">
+            <h3>Pro tips</h3>
+            <ul>
+              <li>Use a long press for a quick point when you already know the place visually on the map.</li>
+              <li>Use Search if you want to find a business, address, or landmark by name.</li>
+              <li>Do not pick your exact current location because Android may not need to simulate anything there.</li>
+              <li>Stop any running route, playlist, or stationary mock before starting a new one.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section id="full-guide">
+          <h2>Need more detail?</h2>
+          <p>
+            This quick start covers the core long-press flow. For alternative picking methods,
+            troubleshooting, and a longer walkthrough, use the full Stationary Pointer guide.
+          </p>
+          <div class="related-guide">
+            <strong>Full guide:</strong>
+            <a href="mock-location-stationary-pointer-long-press.html">Mock any location with a long press — complete guide →</a>
+          </div>
+          <div class="related-guide" style="margin-top: 0.75rem;">
+            <strong>First time?</strong>
+            <a href="mock-loc-android-setup-quick-start.html">Enable Developer options and select Mock Loc — quick start →</a>
+          </div>
+        </section>
+      </article>
+    </div>
+
+    <footer class="article-footer">
+      <p><a href="index.html">← Back to all MockLoc articles</a></p>
+      <p style="margin-top: 0.5rem;">&copy; MockLoc · Hosted on GitHub Pages</p>
+    </footer>
+  </div>
+</body>
+</html>
