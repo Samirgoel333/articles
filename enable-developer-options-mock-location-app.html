@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Step-by-step guide to enable Android Developer options and select Mock Loc as your mock location app — no root required.">
+  <title>Enable Developer Options &amp; Select Mock Loc — Setup Guide</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/article.css">
+</head>
+<body>
+  <div class="article-page">
+    <header class="topbar">
+      <div class="topbar-inner">
+        <a class="back-link" href="index.html">← All articles</a>
+        <div class="logo">
+          <span class="logo-mark" aria-hidden="true"></span>
+          <span class="logo-text">MockLoc</span>
+        </div>
+        <span class="read-time">5 min read</span>
+      </div>
+    </header>
+
+    <section class="hero">
+      <span class="hero-badge">Android setup guide</span>
+      <h1>Enable Developer options and select Mock Loc</h1>
+      <p class="hero-lead">
+        Before Mock Loc can fake your GPS, Android needs to know which app is allowed to provide
+        mock location data. This guide walks you through enabling Developer options and choosing
+        Mock Loc — a normal Android permission flow that does not require root access.
+      </p>
+      <div class="hero-tags">
+        <span class="hero-tag">Setup</span>
+        <span class="hero-tag">Developer options</span>
+        <span class="hero-tag">Mock location app</span>
+        <span class="hero-tag">No root</span>
+      </div>
+    </section>
+
+    <div class="layout">
+      <nav class="toc" aria-label="Table of contents">
+        <p class="toc-title">On this page</p>
+        <ul>
+          <li><a href="#why-needed">Why Android asks this</a></li>
+          <li><a href="#before-you-start">Before you start</a></li>
+          <li><a href="#setup-steps">Step-by-step setup</a></li>
+          <li><a href="#device-tips">Tips by phone brand</a></li>
+          <li><a href="#final-check">Final checklist</a></li>
+          <li><a href="#troubleshooting">Troubleshooting</a></li>
+          <li><a href="#next-steps">What to do next</a></li>
+        </ul>
+      </nav>
+
+      <article class="content">
+        <section id="why-needed">
+          <h2>Why Android requires this setting</h2>
+          <div class="intro-box">
+            <p>
+              <strong>In short:</strong> Android only allows <em>one</em> app at a time to supply
+              mock GPS coordinates. Selecting Mock Loc tells the system you trust it for location
+              testing — other apps cannot quietly take over this permission.
+            </p>
+          </div>
+          <p>
+            Mock location is a developer feature built into Android. It exists so testers, QA
+            engineers, and app developers can simulate being somewhere else without physically
+            travelling there. Mock Loc uses this official setting — you are not hacking the phone
+            or installing risky system tools.
+          </p>
+
+          <div class="feature-grid">
+            <div class="feature-card feature-card--yellow">
+              <span class="feature-icon" aria-hidden="true">🔒</span>
+              <h3>Clear control</h3>
+              <p>You decide exactly which app can mock your location. Change or remove it anytime in Settings.</p>
+            </div>
+            <div class="feature-card feature-card--green">
+              <span class="feature-icon" aria-hidden="true">✅</span>
+              <h3>No root required</h3>
+              <p>Mock Loc works through Android&apos;s built-in developer setting — safe and reversible.</p>
+            </div>
+            <div class="feature-card feature-card--blue">
+              <span class="feature-icon" aria-hidden="true">↩️</span>
+              <h3>Easy to turn off</h3>
+              <p>Return to Developer options and choose <strong>No app</strong> when you want real GPS again.</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="before-you-start">
+          <h2>Before you start</h2>
+          <p>
+            Make sure Mock Loc is installed from the Play Store (or your trusted source) before
+            you complete Step 3. Android can only list apps that are already on your device.
+          </p>
+          <div class="detail-block detail-block--yellow">
+            <h3>You will need</h3>
+            <ul>
+              <li>An Android phone running a recent version of Android (most phones from the last several years work).</li>
+              <li>Your screen lock PIN, password, or fingerprint — Android may ask for this when enabling Developer options.</li>
+              <li>About 2–3 minutes to complete all three steps.</li>
+            </ul>
+          </div>
+          <p>
+            The menu names below can vary slightly between Samsung, Pixel, OnePlus, Xiaomi, Vivo,
+            Oppo, and other brands. The overall flow is the same on nearly every Android phone.
+          </p>
+        </section>
+
+        <section id="setup-steps">
+          <h2>Step-by-step setup</h2>
+          <p>
+            Follow these three steps in order. If you get stuck, check the
+            <a href="#device-tips">device tips</a> or <a href="#troubleshooting">troubleshooting</a>
+            sections below.
+          </p>
+
+          <div class="flow">
+            <div class="flow-step">
+              <span class="flow-num">1</span>
+              <div>
+                <strong>Open About phone</strong>
+                <p>
+                  Open <strong>Settings</strong> on your phone. Scroll down and tap
+                  <strong>About phone</strong>. On some devices this lives inside
+                  <strong>System</strong> or <strong>Software information</strong> — look for a
+                  screen that shows your Android version and device model.
+                </p>
+              </div>
+            </div>
+            <div class="flow-step">
+              <span class="flow-num">2</span>
+              <div>
+                <strong>Enable Developer options</strong>
+                <p>
+                  Find the row labelled <strong>Build number</strong> and tap it
+                  <strong>seven times</strong> in quick succession. Android will count down (for
+                  example, &ldquo;You are now 3 steps away from being a developer&rdquo;). When
+                  finished, you will see a message like <strong>You are now a developer!</strong>
+                </p>
+              </div>
+            </div>
+            <div class="flow-step">
+              <span class="flow-num">3</span>
+              <div>
+                <strong>Select Mock Loc as the mock location app</strong>
+                <p>
+                  Go back to the main Settings screen. Open <strong>Developer options</strong>
+                  (sometimes under <strong>System</strong> or <strong>Additional settings</strong>).
+                  Scroll to the debugging section and tap <strong>Select mock location app</strong>
+                  (on older Android versions it may say <strong>Mock location app</strong>). Choose
+                  <strong>Mock Loc</strong> from the list.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="detail-block detail-block--green" style="margin-top: 1.5rem;">
+            <h3>What each step does</h3>
+            <ul>
+              <li><strong>Step 1</strong> — Takes you to the hidden developer unlock screen.</li>
+              <li><strong>Step 2</strong> — Unlocks Developer options in Settings (this is intentional — Android hides advanced tools from casual users).</li>
+              <li><strong>Step 3</strong> — Registers Mock Loc as the one app allowed to send mock GPS data to the system.</li>
+            </ul>
+            <div class="chip-row">
+              <span class="chip chip--green">About phone</span>
+              <span class="chip chip--green">Build number ×7</span>
+              <span class="chip chip--green">Select mock location app</span>
+            </div>
+          </div>
+        </section>
+
+        <section id="device-tips">
+          <h2>Tips by phone brand</h2>
+          <p>
+            If you cannot find a menu item, try these common locations. The setting always exists —
+            it is just labelled or nested differently.
+          </p>
+
+          <table class="compare-table">
+            <thead>
+              <tr>
+                <th>Brand</th>
+                <th>Where to look</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Samsung Galaxy</td>
+                <td>Settings → About phone → Software information → Build number. Developer options appear under Settings → Developer options.</td>
+              </tr>
+              <tr>
+                <td>Google Pixel</td>
+                <td>Settings → About phone → Build number at the bottom. Developer options under System → Developer options.</td>
+              </tr>
+              <tr>
+                <td>OnePlus / Oppo / Realme</td>
+                <td>Settings → About device → Version → tap Build number. Developer options may be under Additional settings.</td>
+              </tr>
+              <tr>
+                <td>Xiaomi / Redmi / POCO</td>
+                <td>Settings → About phone → MIUI version (tap 7 times on some models) or Build number. Enable Developer options, then find mock location under Debugging.</td>
+              </tr>
+              <tr>
+                <td>Vivo / iQOO</td>
+                <td>Settings → About phone → Software version or Build number. Developer options often under System management.</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p>
+            On Android 12 and newer, the setting is usually called
+            <strong>Select mock location app</strong>. On older versions it may appear as
+            <strong>Allow mock locations</strong> with a simple on/off toggle — turn it on, then
+            pick Mock Loc if prompted.
+          </p>
+        </section>
+
+        <section id="final-check">
+          <h2>Quick final checklist</h2>
+          <p>
+            Before you open Mock Loc and start mocking, confirm these three items:
+          </p>
+          <div class="detail-block detail-block--yellow">
+            <h3>Ready to mock?</h3>
+            <ul>
+              <li>Developer options are enabled on your Android phone.</li>
+              <li><strong>Mock Loc</strong> is selected under <strong>Select mock location app</strong>.</li>
+              <li>You have granted location permission when Mock Loc asks (required for the app to work).</li>
+            </ul>
+            <p style="margin-bottom: 0;">
+              Once complete, open Mock Loc, pick a place on the map, and press <strong>Start</strong>
+              or <strong>Mock</strong>. Your device will then report the selected GPS coordinates to
+              other apps.
+            </p>
+          </div>
+        </section>
+
+        <section id="troubleshooting">
+          <h2>Troubleshooting</h2>
+
+          <h3>Mock Loc does not appear in the list</h3>
+          <p>
+            Install or update Mock Loc from the Play Store, then reopen
+            <strong>Select mock location app</strong>. If it still does not show, restart your phone
+            and try again.
+          </p>
+
+          <h3>Developer options disappeared</h3>
+          <p>
+            Some phones hide Developer options after a restart until you re-enable them. Repeat
+            Step 2 (tap Build number seven times) if the menu is missing.
+          </p>
+
+          <h3>Mocking does not work in other apps</h3>
+          <p>
+            Confirm Mock Loc is still selected as the mock location app. Also check that Mock Loc&apos;s
+            location permission is set to <strong>Allow all the time</strong> or
+            <strong>While using the app</strong> as required, and that you have actually started a
+            mock session inside Mock Loc (the app must be running a stationary point, playlist, or
+            itinerary for coordinates to change).
+          </p>
+
+          <h3>I want to stop using mock locations</h3>
+          <p>
+            Open Developer options → <strong>Select mock location app</strong> → choose
+            <strong>None</strong> or <strong>No app</strong>. Your phone will return to using real
+            GPS from satellites and cell towers.
+          </p>
+        </section>
+
+        <section id="next-steps">
+          <h2>What to do next</h2>
+          <p>
+            Setup is complete! Now learn how to place your first mock location on the map:
+          </p>
+          <div class="feature-grid">
+            <div class="feature-card feature-card--green">
+              <span class="feature-icon" aria-hidden="true">📍</span>
+              <h3>Mock with a long press</h3>
+              <p>
+                The fastest way to fake one fixed GPS point — long press the map, confirm, and tap Mock.
+                <a href="mock-location-stationary-pointer-long-press.html">Read the Stationary Pointer guide →</a>
+              </p>
+            </div>
+            <div class="feature-card feature-card--blue">
+              <span class="feature-icon" aria-hidden="true">📖</span>
+              <h3>Explore all features</h3>
+              <p>
+                Playlists, automatic itineraries, sync, and more.
+                <a href="mock-loc-guide.html">Read the complete feature guide →</a>
+              </p>
+            </div>
+          </div>
+        </section>
+      </article>
+    </div>
+
+    <footer class="article-footer">
+      <p><a href="index.html">← Back to all MockLoc articles</a></p>
+      <p style="margin-top: 0.5rem;">&copy; MockLoc · Hosted on GitHub Pages</p>
+    </footer>
+  </div>
+</body>
+</html>
