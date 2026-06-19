@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A transparent guide to how Mock Loc syncs and backs up your stationary points, playlists, and itineraries — including banners, notifications, and background sync.">
+  <title>Sync &amp; Backup — How Mock Loc Saves Your Data</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/article.css">
+</head>
+<body>
+  <div class="article-page">
+    <header class="topbar">
+      <div class="topbar-inner">
+        <a class="back-link" href="index.html">← All articles</a>
+        <div class="logo">
+          <span class="logo-mark" aria-hidden="true"></span>
+          <span class="logo-text">MockLoc</span>
+        </div>
+        <span class="read-time">8 min read</span>
+      </div>
+    </header>
+
+    <section class="hero">
+      <span class="hero-badge">Transparency guide</span>
+      <h1>How Mock Loc syncs and backs up your data</h1>
+      <p class="hero-lead">
+        Your saved locations, playlists, and routes belong to you. This page explains exactly when
+        Mock Loc uploads data to the server, what you will see on screen, and why — so you never
+        have to guess what the app is doing behind the scenes.
+      </p>
+      <div class="hero-tags">
+        <span class="hero-tag">Cloud backup</span>
+        <span class="hero-tag">Auto sync</span>
+        <span class="hero-tag">Notifications</span>
+        <span class="hero-tag">Open &amp; honest</span>
+      </div>
+    </section>
+
+    <div class="layout">
+      <nav class="toc" aria-label="Table of contents">
+        <p class="toc-title">On this page</p>
+        <ul>
+          <li><a href="#why-transparent">Why we share this</a></li>
+          <li><a href="#what-syncs">What gets backed up</a></li>
+          <li><a href="#when-syncs">When sync happens</a></li>
+          <li><a href="#flow-manual">Manual sync flow</a></li>
+          <li><a href="#flow-login">Login sync flow</a></li>
+          <li><a href="#flow-background">Background auto sync</a></li>
+          <li><a href="#sync-banner">The sync banner</a></li>
+          <li><a href="#notifications">Notifications</a></li>
+          <li><a href="#settings">Auto sync settings</a></li>
+          <li><a href="#privacy">What we do not sync</a></li>
+          <li><a href="#faq">Quick FAQ</a></li>
+        </ul>
+      </nav>
+
+      <article class="content">
+        <section id="why-transparent">
+          <h2>Why we publish this guide</h2>
+          <div class="transparency-promise">
+            <p>
+              <strong>Our promise:</strong> Mock Loc handles location testing data that matters to
+              your work. We believe you should know <em>when</em> data leaves your phone, <em>what</em>
+              is included, and <em>how</em> to control it — without reading technical docs or
+              reverse-engineering the app.
+            </p>
+          </div>
+          <p>
+            Sync is not a hidden background process. The app tells you when changes are waiting to
+            back up, shows a banner on the home screen, and posts notifications during upload. If
+            you are logged out, it reminds you to sign in instead of silently failing. This guide
+            mirrors the real behaviour in the current Mock Loc Android app.
+          </p>
+        </section>
+
+        <section id="what-syncs">
+          <h2>What gets backed up</h2>
+          <p>
+            Mock Loc syncs <strong>three types of data</strong> tied to your account. Everything
+            else stays on your device unless you explicitly share it (for example, sharing a
+            playlist link).
+          </p>
+
+          <div class="sync-data-grid">
+            <div class="sync-data-card sync-data-card--yellow">
+              <h3>📍 Stationary points</h3>
+              <p>Saved pins — names, coordinates, accuracy, favourites, icons, and history entries you created on the map.</p>
+            </div>
+            <div class="sync-data-card sync-data-card--green">
+              <h3>🔁 Stationary playlists</h3>
+              <p>Named pin queues, loop settings, colours, and each stop inside a playlist with its timing and accuracy.</p>
+            </div>
+            <div class="sync-data-card sync-data-card--blue">
+              <h3>🛣️ Automatic itineraries</h3>
+              <p>Route plans and their segments — drawn paths, speeds, accuracy per segment, and travel mode (walk, drive, direct).</p>
+            </div>
+          </div>
+
+          <div class="detail-block detail-block--blue" style="margin-top: 1.25rem;">
+            <h3>Upload order</h3>
+            <p style="margin-bottom: 0.5rem;">
+              When a sync runs, Mock Loc uploads in a fixed sequence so the server always receives
+              a consistent snapshot:
+            </p>
+            <ol>
+              <li><strong>Stationary points</strong> first</li>
+              <li><strong>Playlists</strong> (including their points) second</li>
+              <li><strong>Itineraries</strong> (routes and segments) last</li>
+            </ol>
+            <p style="margin-bottom: 0;">
+              After each step succeeds, the app marks that data as synced on your phone. If a step
+              fails, you will see an error and can tap <strong>Sync</strong> to try again.
+            </p>
+          </div>
+        </section>
+
+        <section id="when-syncs">
+          <h2>When sync happens</h2>
+          <p>
+            Sync is triggered in four main situations. Each one is designed for a different moment
+            in your workflow.
+          </p>
+
+          <div class="trigger-grid">
+            <div class="trigger-card">
+              <span class="trigger-icon trigger-icon--manual" aria-hidden="true">👆</span>
+              <div>
+                <h3>You tap Sync on the home screen</h3>
+                <p>
+                  Manual backup. Opens login if you are signed out; otherwise uploads all pending
+                  changes immediately. Shows progress in the banner and notification shade.
+                </p>
+              </div>
+            </div>
+            <div class="trigger-card">
+              <span class="trigger-icon trigger-icon--login" aria-hidden="true">🔑</span>
+              <div>
+                <h3>You log in or sign up</h3>
+                <p>
+                  Mock Loc <strong>downloads</strong> your cloud data first (points → playlists →
+                  itineraries), then <strong>uploads</strong> anything you created as a guest on
+                  this device.
+                </p>
+              </div>
+            </div>
+            <div class="trigger-card">
+              <span class="trigger-icon trigger-icon--auto" aria-hidden="true">🔄</span>
+              <div>
+                <h3>Background auto sync (scheduled)</h3>
+                <p>
+                  If enabled in Settings → Developers → General, Mock Loc checks on a timer (default
+                  every 4 hours) whether anything needs uploading — even when the app is closed.
+                </p>
+              </div>
+            </div>
+            <div class="trigger-card">
+              <span class="trigger-icon trigger-icon--change" aria-hidden="true">✏️</span>
+              <div>
+                <h3>You save data or leave the app</h3>
+                <p>
+                  After you create or edit a point, playlist, or itinerary, Mock Loc queues a
+                  near-term background check. Leaving the app also triggers a check if auto sync is on.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="flow-manual">
+          <h2>Manual sync — step by step</h2>
+          <p>
+            This is what happens when you tap <strong>Sync</strong> on the home screen while logged in.
+          </p>
+
+          <div class="flow-diagram" role="img" aria-label="Manual sync flow diagram">
+            <p class="flow-diagram__title">Manual sync flow</p>
+            <div class="flow-pipeline">
+              <div class="flow-node flow-node--start">
+                <strong>You tap Sync</strong>
+                <small>Home screen banner or sync button</small>
+              </div>
+              <div class="flow-connector" aria-hidden="true"></div>
+              <div class="flow-node flow-node--check">
+                <strong>Are you logged in?</strong>
+                <small>If not → opens the login screen</small>
+              </div>
+              <div class="flow-connector" aria-hidden="true"></div>
+              <div class="flow-node flow-node--action">
+                <strong>Count pending changes</strong>
+                <small>Banner lists locations, playlists, and routes waiting to back up</small>
+              </div>
+              <div class="flow-connector" aria-hidden="true"></div>
+              <div class="flow-node flow-node--notify">
+                <strong>Progress notification appears</strong>
+                <small>&ldquo;Syncing Mock Loc data&rdquo; in your notification shade</small>
+              </div>
+              <div class="flow-connector" aria-hidden="true"></div>
+              <div class="flow-node flow-node--action">
+                <strong>Upload stationary points</strong>
+                <small>Then playlists, then itineraries — one after another</small>
+              </div>
+              <div class="flow-connector" aria-hidden="true"></div>
+              <div class="flow-node flow-node--success">
+                <strong>Done — banner hides</strong>
+                <small>Badge shows &ldquo;Synced&rdquo;. Notification is dismissed.</small>
+              </div>
+            </div>
+          </div>
+
+          <p>
+            While sync runs, the banner shows a progress bar and the message
+            <strong>Syncing…</strong>. You can leave the app — upload continues in the background
+            via a foreground service so Android does not stop it mid-way.
+          </p>
+        </section>
+
+        <section id="flow-login">
+          <h2>Login sync — download then upload</h2>
+          <p>
+            Signing in is a two-way process. Mock Loc first pulls your latest cloud backup onto the
+            phone, then pushes any local-only changes you made before logging in.
+          </p>
+
+          <div class="flow-diagram" role="img" aria-label="Login sync flow diagram">
+            <p class="flow-diagram__title">Login / sign-up sync flow</p>
+            <div class="flow-pipeline">
+              <div class="flow-node flow-node--start">
+                <strong>Account verified</strong>
+                <small>Email, phone, or Google sign-in succeeds</small>
+              </div>
+              <div class="flow-connector" aria-hidden="true"></div>
+              <div class="flow-node flow-node--action">
+                <strong>Download stationary points</strong>
+                <small>Progress screen: &ldquo;Collecting your stationary points…&rdquo;</small>
+              </div>
+              <div class="flow-connector" aria-hidden="true"></div>
+              <div class="flow-node flow-node--action">
+                <strong>Download playlists</strong>
+                <small>Step 2 on the sync progress panel</small>
+              </div>
+              <div class="flow-connector" aria-hidden="true"></div>
+              <div class="flow-node flow-node--action">
+                <strong>Download itineraries</strong>
+                <small>Step 3 — routes and segments from your account</small>
+              </div>
+              <div class="flow-connector" aria-hidden="true"></div>
+              <div class="flow-node flow-node--check">
+                <strong>Guest data on this device?</strong>
+                <small>If you used the app before logging in, local changes are merged</small>
+              </div>
+              <div class="flow-connector" aria-hidden="true"></div>
+              <div class="flow-node flow-node--success">
+                <strong>Upload merged changes</strong>
+                <small>Background upload starts; you land on the home screen</small>
+              </div>
+            </div>
+          </div>
+
+          <p>
+            Keep the app open during the download steps — it usually finishes in a few seconds. The
+            footer hint on the login sync screen says: <em>&ldquo;This usually takes a few seconds.
+            Please keep the app open.&rdquo;</em>
+          </p>
+        </section>
+
+        <section id="flow-background">
+          <h2>Background auto sync — what happens while you are away</h2>
+          <p>
+            Auto sync is <strong>on by default</strong> (you can turn it off in
+            Settings → Developers → General). When enabled, Android schedules periodic checks using
+            your chosen interval.
+          </p>
+
+          <div class="flow-diagram" role="img" aria-label="Background auto sync flow diagram">
+            <p class="flow-diagram__title">Background check decision tree</p>
+            <div class="flow-pipeline">
+              <div class="flow-node flow-node--start">
+                <strong>Timer fires</strong>
+                <small>Default: every 4 hours · also after you save data or close the app</small>
+              </div>
+              <div class="flow-connector" aria-hidden="true"></div>
+              <div class="flow-node flow-node--check">
+                <strong>Any unsaved changes?</strong>
+                <small>If nothing pending → check ends quietly, no notification</small>
+              </div>
+              <div class="flow-connector" aria-hidden="true"></div>
+              <div class="flow-branch">
+                <div class="flow-node flow-node--warn">
+                  <strong>Logged out</strong>
+                  <small>High-priority reminder: &ldquo;Unsaved Mock Loc data — log in and tap Sync&rdquo;</small>
+                </div>
+                <div class="flow-node flow-node--success">
+                  <strong>Logged in</strong>
+                  <small>Upload starts with a low-priority progress notification</small>
+                </div>
+              </div>
+              <div class="flow-connector" aria-hidden="true"></div>
+              <div class="flow-node flow-node--action">
+                <strong>Network required</strong>
+                <small>No internet → sync retries later; nothing is lost on your phone</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="detail-block detail-block--green">
+            <h3>Interval options</h3>
+            <p>You can choose how often background checks run:</p>
+            <div class="chip-row">
+              <span class="chip chip--green">30 min</span>
+              <span class="chip chip--green">1 hour</span>
+              <span class="chip chip--green">4 hours (default)</span>
+              <span class="chip chip--green">6 hours</span>
+              <span class="chip chip--green">12 hours</span>
+              <span class="chip chip--green">24 hours</span>
+            </div>
+            <p style="margin-top: 0.75rem; margin-bottom: 0;">
+              Shorter intervals keep backups fresher but use slightly more battery. Android may
+              batch checks to save power — that is normal system behaviour, not Mock Loc ignoring
+              your setting.
+            </p>
+          </div>
+        </section>
+
+        <section id="sync-banner">
+          <h2>The home screen sync banner</h2>
+          <p>
+            The peach-coloured bar below your greeting is the <strong>sync banner</strong>. It is
+            your at-a-glance backup status — not an ad, not a generic alert.
+          </p>
+
+          <div class="banner-state-grid">
+            <div class="banner-state banner-state--show">
+              <h3>✅ Banner appears when</h3>
+              <ul>
+                <li>You have <strong>unsaved changes</strong> on this device (new or edited points, playlists, or routes).</li>
+                <li>You are on the <strong>home screen</strong> and not actively mocking a location.</li>
+                <li>The banner shows how many items are waiting and a <strong>View details</strong> link listing each one.</li>
+                <li>If logged out, the greeting area shows <strong>Login to Sync Data</strong> instead of a sync badge.</li>
+              </ul>
+            </div>
+            <div class="banner-state banner-state--hide">
+              <h3>🚫 Banner is hidden when</h3>
+              <ul>
+                <li><strong>Everything is synced</strong> — badge reads &ldquo;Synced&rdquo; and the banner slides away.</li>
+                <li>You are <strong>actively mocking</strong> (stationary, playlist, or itinerary player is running on the home screen).</li>
+                <li>A sync is not needed because there are zero pending changes.</li>
+              </ul>
+            </div>
+          </div>
+
+          <h3>Banner states while you interact</h3>
+          <table class="compare-table">
+            <thead>
+              <tr>
+                <th>State</th>
+                <th>What you see</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Idle — pending data</td>
+                <td>&ldquo;You have updates not backed up yet&rdquo; + <strong>Sync</strong> button + optional <strong>View details</strong></td>
+              </tr>
+              <tr>
+                <td>Syncing</td>
+                <td>Progress bar, <strong>Syncing…</strong> label, step text (points → playlists → itineraries)</td>
+              </tr>
+              <tr>
+                <td>Failed</td>
+                <td>&ldquo;Backup could not finish. Tap Sync now to try again.&rdquo; + error snackbar</td>
+              </tr>
+              <tr>
+                <td>All clear</td>
+                <td>Banner hidden · badge shows <strong>Synced</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section id="notifications">
+          <h2>Notifications you may see</h2>
+          <p>
+            Mock Loc uses two notification channels so you can tell progress apart from reminders.
+            Allow notifications for the best experience — especially if you use auto sync while
+            logged out.
+          </p>
+
+          <div class="notif-grid">
+            <div class="notif-card">
+              <span class="notif-card__type notif-card__type--progress">Data sync</span>
+              <h3>Syncing Mock Loc data</h3>
+              <p>
+                Shown during upload. Title: <em>Syncing Mock Loc data</em>. Body counts pending
+                items and the current step. Tap to open the app. Dismissed when sync completes.
+              </p>
+            </div>
+            <div class="notif-card">
+              <span class="notif-card__type notif-card__type--reminder">Sync reminders</span>
+              <h3>Unsaved Mock Loc data</h3>
+              <p>
+                Shown when auto sync finds pending data but you are <strong>not logged in</strong>.
+                High priority — taps open the login screen. Cancelled once you sign in.
+              </p>
+            </div>
+            <div class="notif-card">
+              <span class="notif-card__type notif-card__type--restore">Account restore</span>
+              <h3>Updating your Mock Loc data</h3>
+              <p>
+                Rare — used when an admin-triggered restore downloads the latest server copy to your
+                device. Separate from everyday backup uploads.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section id="settings">
+          <h2>Controlling auto sync</h2>
+          <p>
+            Go to <strong>Settings → Developers → General → Background sync</strong> (Developer
+            options tab must be unlocked). Here you can:
+          </p>
+          <ul>
+            <li>Toggle <strong>Auto sync in background</strong> on or off.</li>
+            <li>Pick your <strong>check interval</strong> (30 minutes to 24 hours).</li>
+            <li>Read the built-in note on how reminders work when logged out.</li>
+          </ul>
+          <p>
+            When you change the interval, Mock Loc shows a confirmation snackbar:
+            <em>&ldquo;Background sync scheduled — checks run every [interval].&rdquo;</em>
+            A near-term check is queued so you can verify notifications within about 10 seconds.
+          </p>
+        </section>
+
+        <section id="privacy">
+          <h2>What we do not sync</h2>
+          <div class="privacy-box">
+            <h3>Stays on your device</h3>
+            <ul>
+              <li><strong>Live GPS mocking sessions</strong> — only your saved data syncs, not real-time location streams.</li>
+              <li><strong>Your physical phone location</strong> — stored separately for map search; not uploaded as mock data.</li>
+              <li><strong>App settings</strong> — map theme, developer toggles, and UI preferences stay local unless noted.</li>
+              <li><strong>Support tickets / queries</strong> — handled through a separate help flow, not the backup sync.</li>
+            </ul>
+            <p style="margin-top: 0.75rem; margin-bottom: 0;">
+              Sync requires a network connection and a valid login. Data is sent over HTTPS to the
+              Mock Loc API servers associated with your account — the same endpoints the app uses
+              for <code>/sync-stationary-points</code>, <code>/sync-playlists</code>, and
+              <code>/sync-itineraries</code>.
+            </p>
+          </div>
+        </section>
+
+        <section id="faq">
+          <h2>Quick FAQ</h2>
+
+          <h3>Can I use Mock Loc without an account?</h3>
+          <p>
+            Yes. You can save points, playlists, and routes locally. They stay on your phone until
+            you log in and sync. The banner will prompt you when backup is needed.
+          </p>
+
+          <h3>Will sync interrupt my mock session?</h3>
+          <p>
+            The sync banner hides while you are actively mocking on the home screen so it does not
+            get in the way. Background upload can still run if you started sync before mocking, or
+            via auto sync while you use other apps.
+          </p>
+
+          <h3>Why did auto sync not run exactly on time?</h3>
+          <p>
+            Android optimises background work for battery life. Checks may arrive a few minutes
+            late, especially on aggressive battery savers. Your data remains safe on the device
+            until the next successful upload.
+          </p>
+
+          <h3>What if sync fails?</h3>
+          <p>
+            Your changes are <strong>not deleted</strong>. The banner shows a failure message. Tap
+            <strong>Sync</strong> again when you have a stable connection. Check that you are still
+            logged in.
+          </p>
+
+          <div class="feature-grid" style="margin-top: 1.5rem;">
+            <div class="feature-card feature-card--yellow">
+              <span class="feature-icon" aria-hidden="true">📖</span>
+              <h3>Full feature overview</h3>
+              <p>
+                Playlists, itineraries, notifications, and more.
+                <a href="mock-loc-guide.html">Read the complete guide →</a>
+              </p>
+            </div>
+            <div class="feature-card feature-card--green">
+              <span class="feature-icon" aria-hidden="true">📍</span>
+              <h3>First mock location</h3>
+              <p>
+                New to Mock Loc? Start with a long press on the map.
+                <a href="mock-location-stationary-pointer-long-press.html">Read the guide →</a>
+              </p>
+            </div>
+          </div>
+        </section>
+      </article>
+    </div>
+
+    <footer class="article-footer">
+      <p><a href="index.html">← Back to all MockLoc articles</a></p>
+      <p style="margin-top: 0.5rem;">&copy; MockLoc · Hosted on GitHub Pages · Last updated June 2025</p>
+    </footer>
+  </div>
+</body>
+</html>
