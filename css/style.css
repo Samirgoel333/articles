@@ -132,6 +132,20 @@ h1 {
   box-shadow: 0 14px 32px rgba(42, 42, 42, 0.12);
 }
 
+.card--featured-article {
+  overflow: hidden;
+}
+
+.card-thumb {
+  display: block;
+  width: calc(100% + 2.5rem);
+  aspect-ratio: 1 / 1;
+  margin: -1.35rem -1.25rem 1rem;
+  object-fit: cover;
+  background: var(--yellow);
+  border-bottom: 1px solid rgba(42, 42, 42, 0.06);
+}
+
 .card--soon {
   opacity: 0.92;
 }
