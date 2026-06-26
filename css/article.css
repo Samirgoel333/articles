@@ -284,10 +284,21 @@ span.logo-mark {
   margin: 0 0 1rem;
 }
 
-.content ul,
+.content ul:not(.point-highlights):not(.insight-cards),
 .content ol {
   margin: 0 0 1rem;
   padding-left: 1.25rem;
+}
+
+.content .point-highlights,
+.content .insight-cards {
+  padding-left: 0;
+  list-style: none;
+}
+
+.content .point-highlights > li,
+.content .insight-cards > li {
+  list-style: none;
 }
 
 .intro-box {
@@ -347,6 +358,7 @@ span.logo-mark {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 0.75rem;
+  width: 100%;
   margin: 1rem 0 0;
   padding: 0;
   list-style: none;
@@ -376,8 +388,12 @@ span.logo-mark {
 }
 
 .point-highlight__icon svg {
+  display: block;
   width: 1.35rem;
   height: 1.35rem;
+  max-width: 1.35rem;
+  max-height: 1.35rem;
+  flex-shrink: 0;
 }
 
 .point-highlight__icon--yellow {
@@ -415,6 +431,7 @@ span.logo-mark {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 0.75rem;
+  width: 100%;
   margin: 1rem 0 0;
   padding: 0;
   list-style: none;
@@ -422,6 +439,18 @@ span.logo-mark {
 
 .insight-cards--tips {
   grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.insight-cards--active {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.insight-cards > li.insight-card {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 0.8rem;
+  list-style: none;
 }
 
 .insight-card {
@@ -441,13 +470,19 @@ span.logo-mark {
   flex-shrink: 0;
   width: 2.5rem;
   height: 2.5rem;
+  min-width: 2.5rem;
+  min-height: 2.5rem;
   border-radius: 12px;
   color: var(--black);
 }
 
 .insight-card__icon svg {
+  display: block;
   width: 1.25rem;
   height: 1.25rem;
+  max-width: 1.25rem;
+  max-height: 1.25rem;
+  flex-shrink: 0;
 }
 
 .insight-card__body {
@@ -521,10 +556,12 @@ span.logo-mark {
 }
 
 .article-section {
+  width: 100%;
   margin-bottom: 3rem;
   padding: 1.35rem 1.2rem 1.2rem;
   border-radius: calc(var(--radius) + 2px);
   border: 1px solid transparent;
+  box-sizing: border-box;
 }
 
 .article-section__badge {
