@@ -16,7 +16,7 @@
       <div class="topbar-inner">
         <a class="back-link" href="index.html">← All articles</a>
         <div class="logo">
-          <span class="logo-mark" aria-hidden="true"></span>
+          <img class="logo-mark" src="assets/app-launcher.png" alt="" width="96" height="96">
           <span class="logo-text">MockLoc</span>
         </div>
         <span class="read-time">5 min read</span>
@@ -215,65 +215,160 @@
         <section id="what-it-does">
           <h2>One selected point, held steady</h2>
           <p>
-            Unlike a route or playlist, Stationary Pointer does not move through many places. It
-            keeps your mock GPS at the exact point you choose until you press Stop.
+            Stationary Pointer keeps your GPS at one spot. Unlike routes or playlists, nothing moves
+            until you press Stop.
           </p>
 
-          <div class="feature-grid">
-            <div class="feature-card feature-card--yellow">
-              <span class="feature-icon" aria-hidden="true">📌</span>
-              <h3>Best for one-place testing</h3>
-              <p>Test check-ins, local search results, delivery areas, dating apps, games, or any workflow that depends on one fixed GPS position.</p>
-            </div>
-            <div class="feature-card feature-card--green">
-              <span class="feature-icon" aria-hidden="true">⚡</span>
-              <h3>No typing required</h3>
-              <p>Long press is useful when you can see the location on the map and want to start mocking without opening search or entering coordinates.</p>
-            </div>
-            <div class="feature-card feature-card--blue">
-              <span class="feature-icon" aria-hidden="true">💾</span>
-              <h3>Reusable from history</h3>
-              <p>When the point is new, Mock Loc saves it in your stationary history so you can mock the same place again later.</p>
-            </div>
-          </div>
+          <ul class="point-highlights">
+            <li class="point-highlight">
+              <span class="point-highlight__icon point-highlight__icon--yellow" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="3"></circle>
+                  <path d="M12 2v3M12 19v3M2 12h3M19 12h3"></path>
+                  <path d="M4.9 4.9l2.1 2.1M16.9 16.9l2.1 2.1M4.9 19.1l2.1-2.1M16.9 7.1l2.1-2.1"></path>
+                </svg>
+              </span>
+              <strong class="point-highlight__title">One fixed spot</strong>
+              <p class="point-highlight__text">Apps read one GPS coordinate until you stop the mock.</p>
+            </li>
+            <li class="point-highlight">
+              <span class="point-highlight__icon point-highlight__icon--green" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 2v6"></path>
+                  <path d="M8.5 8.5 12 12"></path>
+                  <circle cx="12" cy="12" r="8"></circle>
+                  <path d="M12 16v2"></path>
+                </svg>
+              </span>
+              <strong class="point-highlight__title">Long press ready</strong>
+              <p class="point-highlight__text">Pick a place on the map without search or typing.</p>
+            </li>
+            <li class="point-highlight">
+              <span class="point-highlight__icon point-highlight__icon--blue" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M3 3v5h5"></path>
+                  <path d="M21 21v-5h-5"></path>
+                  <path d="M21 8a9 9 0 0 0-15-3.7"></path>
+                  <path d="M3 16a9 9 0 0 0 15 3.7"></path>
+                </svg>
+              </span>
+              <strong class="point-highlight__title">Saved to history</strong>
+              <p class="point-highlight__text">Mock the same place again from your saved pins.</p>
+            </li>
+          </ul>
         </section>
 
-        <section id="after-mock">
+        <section id="after-mock" class="article-section article-section--active">
+          <span class="article-section__badge">After you tap Mock</span>
           <h2>What happens after you tap Mock</h2>
           <p>
-            The point becomes active immediately. After you tap Mock, the app starts the stationary
-            point service for that saved point. The marker pulses on the map, the history tray hides,
-            and the player controls become available so you can stop the mock whenever you are done.
+            Mocking starts right away. The point goes live, the map updates, and other apps begin
+            reading your mocked GPS.
           </p>
-          <div class="detail-block detail-block--green">
-            <h3>While mocking is running</h3>
-            <ul>
-              <li>The map marker pulses to show the active mock.</li>
-              <li>Player controls and a notification let you stop from anywhere.</li>
-              <li>Other apps read the mocked coordinates, not your physical location.</li>
-            </ul>
-          </div>
+
+          <ul class="insight-cards insight-cards--active">
+            <li class="insight-card insight-card--mint">
+              <span class="insight-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 21s6-5.2 6-10a6 6 0 1 0-12 0c0 4.8 6 10 6 10z"></path>
+                  <circle cx="12" cy="11" r="2"></circle>
+                  <path d="M12 7v1M12 14v1M9 11h1M14 11h1"></path>
+                </svg>
+              </span>
+              <div class="insight-card__body">
+                <strong class="insight-card__title">Active marker on map</strong>
+                <p class="insight-card__text">The pin pulses so you can see the mock is running.</p>
+              </div>
+            </li>
+            <li class="insight-card insight-card--teal">
+              <span class="insight-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="6" y="4" width="4" height="16" rx="1"></rect>
+                  <rect x="14" y="4" width="4" height="16" rx="1"></rect>
+                  <path d="M4 7h2M18 7h2"></path>
+                </svg>
+              </span>
+              <div class="insight-card__body">
+                <strong class="insight-card__title">Stop from anywhere</strong>
+                <p class="insight-card__text">Use player controls or the notification to pause or stop.</p>
+              </div>
+            </li>
+            <li class="insight-card insight-card--cyan">
+              <span class="insight-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="7" y="2" width="10" height="20" rx="2"></rect>
+                  <circle cx="12" cy="18" r="1"></circle>
+                  <path d="M10 6h4"></path>
+                </svg>
+              </span>
+              <div class="insight-card__body">
+                <strong class="insight-card__title">Apps see the mock</strong>
+                <p class="insight-card__text">Google Maps and other apps read the mocked coordinates.</p>
+              </div>
+            </li>
+          </ul>
         </section>
 
-        <section id="tips">
+        <section id="tips" class="article-section article-section--tips">
+          <span class="article-section__badge">Before you long press</span>
           <h2>Quick tips before you long press</h2>
-          <div class="detail-block detail-block--yellow">
-            <h3>Pro tips</h3>
-            <ul>
-              <li>Use a long press for a quick point when you already know the place visually on the map.</li>
-              <li>Use Search if you want to find a business, address, or landmark by name.</li>
-              <li>Do not pick your exact current location because Android may not need to simulate anything there.</li>
-              <li>Stop any running route, playlist, or stationary mock before starting a new one.</li>
-            </ul>
-          </div>
+          <p>Small choices that make the first mock smoother.</p>
+
+          <ul class="insight-cards insight-cards--tips">
+            <li class="insight-card insight-card--amber">
+              <span class="insight-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 2v6"></path>
+                  <path d="M8.5 8.5 12 12"></path>
+                  <circle cx="12" cy="12" r="8"></circle>
+                </svg>
+              </span>
+              <div class="insight-card__body">
+                <strong class="insight-card__title">Use long press when you see the place</strong>
+                <p class="insight-card__text">Best when the location is already visible on the map.</p>
+              </div>
+            </li>
+            <li class="insight-card insight-card--gold">
+              <span class="insight-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="7"></circle>
+                  <path d="m20 20-3.5-3.5"></path>
+                </svg>
+              </span>
+              <div class="insight-card__body">
+                <strong class="insight-card__title">Use Search for names</strong>
+                <p class="insight-card__text">Find a business, address, or landmark by name instead.</p>
+              </div>
+            </li>
+            <li class="insight-card insight-card--coral">
+              <span class="insight-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="8"></circle>
+                  <path d="M12 8v5"></path>
+                  <path d="M12 16h.01"></path>
+                </svg>
+              </span>
+              <div class="insight-card__body">
+                <strong class="insight-card__title">Avoid your exact current spot</strong>
+                <p class="insight-card__text">Android may not need to simulate where you already are.</p>
+              </div>
+            </li>
+            <li class="insight-card insight-card--peach">
+              <span class="insight-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="5" y="5" width="14" height="14" rx="2"></rect>
+                  <path d="M9 9h6v6H9z"></path>
+                </svg>
+              </span>
+              <div class="insight-card__body">
+                <strong class="insight-card__title">Stop other mocks first</strong>
+                <p class="insight-card__text">End any route, playlist, or stationary mock before starting a new one.</p>
+              </div>
+            </li>
+          </ul>
         </section>
       </article>
     </div>
-
-    <footer class="article-footer">
-      <p><a href="index.html">← Back to all MockLoc articles</a></p>
-      <p style="margin-top: 0.5rem;">&copy; MockLoc · Hosted on GitHub Pages</p>
-    </footer>
 
     <div class="read-progress" aria-hidden="true">
       <div class="read-progress__bar" id="readProgressBar"></div>

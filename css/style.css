@@ -47,9 +47,15 @@ body {
 }
 
 .logo-mark {
+  display: block;
   width: 2rem;
   height: 2rem;
   border-radius: 10px;
+  object-fit: cover;
+  box-shadow: 0 4px 14px rgba(42, 42, 42, 0.12);
+}
+
+span.logo-mark {
   background: var(--yellow);
   box-shadow: 0 4px 14px rgba(255, 226, 0, 0.45);
 }
