@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Learn how to find a place by name or address in Mock Loc Stationary Pointer using Search, then mock that GPS location.">
+  <title>Stationary Pointer Search — Find and Mock Any Place</title>
+  <script>
+    (function () {
+      try {
+        var isPhone =
+          window.matchMedia('(max-width: 900px)').matches ||
+          /Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+        var meta = document.querySelector('meta[name="viewport"]');
+        if (!meta) return;
+
+        if (isPhone) {
+          meta.setAttribute('content', 'width=device-width, initial-scale=1.0');
+          sessionStorage.setItem('ed-view-mode', 'mobile');
+          sessionStorage.setItem('ed-phone-ui', '1');
+        } else if (sessionStorage.getItem('ed-view-mode') === 'desktop') {
+          meta.setAttribute('content', 'width=1100');
+          document.documentElement.classList.add('ed-force-desktop');
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/article.css?v=20260712-ed23">
+  <link rel="stylesheet" href="css/editorial.css?v=20260712-ed23">
+</head>
+<body>
+  <div class="article-page article-page--map-input article-page--editorial">
+    <div class="ed-header-band">
+      <header class="ed-header-bar">
+        <div class="ed-header-bar__inner">
+          <a class="back-link" href="index.html">← All articles</a>
+          <a class="ed-brand" href="index.html" aria-label="Mock-Loc home">
+            <img
+              class="ed-brand__logo"
+              src="assets/logo_statement.png"
+              alt="Mock-Loc — Your Location Testing Buddy"
+              width="640"
+              height="120">
+          </a>
+          <span class="ed-header-bar__spacer" aria-hidden="true"></span>
+        </div>
+      </header>
+
+      <section class="ed-hero" aria-labelledby="search-hero-title">
+        <div class="ed-hero__inner">
+          <div class="ed-hero__copy">
+            <span class="ed-kicker">Stationary Pointer · Search</span>
+            <h1 id="search-hero-title">Find a place by name, then mock it</h1>
+            <p class="ed-hero__lead">
+              Know the café, landmark, or street address you need? Use <strong>Search</strong> in
+              Stationary Pointer. Type a few letters, pick a result, confirm, and Mock Loc holds your
+              GPS at that spot until you stop.
+            </p>
+          </div>
+
+          <figure class="ed-hero__device" id="shot-search-hero">
+            <div class="ed-phone">
+              <div class="ed-phone__screen">
+                <img
+                  src="assets/search/00-hero-search.png"
+                  alt="Mock Loc Search screen showing results for India Gate with place names and addresses">
+              </div>
+            </div>
+            <figcaption class="ed-hero__device-caption">
+              Search — find places by name or address
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+    </div>
+
+    <div class="layout">
+      <article class="content">
+        <section id="when-to-use">
+          <h2>When Search is the right choice</h2>
+          <p>
+            Search is ideal when you already know <em>what</em> the place is called — a business
+            name, landmark, or full address — but do not want to hunt for it by dragging the map.
+          </p>
+
+          <ol class="mi-steps" aria-label="Why Search works well">
+            <li class="mi-steps__item">
+              <span class="mi-steps__icon" aria-hidden="true">
+                <span class="mi-steps__num">1</span>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"></circle><path d="M16.5 16.5L21 21"></path></svg>
+              </span>
+              <div class="mi-steps__body">
+                <h3 class="mi-steps__title">Named places</h3>
+                <p class="mi-steps__text">Restaurants, hospitals, offices, airports, and other places that show up by name.</p>
+              </div>
+            </li>
+            <li class="mi-steps__item">
+              <span class="mi-steps__icon" aria-hidden="true">
+                <span class="mi-steps__num">2</span>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-5.2 7-11a7 7 0 1 0-14 0c0 5.8 7 11 7 11z"></path><circle cx="12" cy="10" r="2.2"></circle></svg>
+              </span>
+              <div class="mi-steps__body">
+                <h3 class="mi-steps__title">Addresses</h3>
+                <p class="mi-steps__text">Street addresses and known locations you can type faster than zooming on the map.</p>
+              </div>
+            </li>
+            <li class="mi-steps__item">
+              <span class="mi-steps__icon" aria-hidden="true">
+                <span class="mi-steps__num">3</span>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"></circle><path d="M12 8v4.5L15 16"></path></svg>
+              </span>
+              <div class="mi-steps__body">
+                <h3 class="mi-steps__title">Recent picks</h3>
+                <p class="mi-steps__text">Places you selected before appear under Recent searches for one-tap reuse.</p>
+              </div>
+            </li>
+          </ol>
+
+          <div class="intro-box">
+            <p>
+              <strong>Quick comparison:</strong> Use <strong>Search</strong> for names and
+              addresses. Use <strong>Nearby</strong> to browse categories around your map pin.
+              Use <strong>Manual</strong> when you already have exact latitude and longitude.
+              Use a <strong>long press</strong> when you can see the spot on the map.
+            </p>
+          </div>
+        </section>
+
+        <section id="prerequisites">
+          <h2>Before you begin</h2>
+          <div class="detail-block detail-block--yellow">
+            <h3>Checklist</h3>
+            <ul>
+              <li>
+                <strong>Developer options</strong> enabled and Mock Loc selected as your mock
+                location app.
+                <a href="mock-loc-android-setup-quick-start.html">Quick start →</a>
+              </li>
+              <li><strong>Internet connection</strong> — Search needs the network to look up places.</li>
+              <li><strong>No mock already running</strong> — stop any active stationary session first; Search is ignored while playback is active.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section id="steps">
+          <h2>How Search works — step by step</h2>
+
+          <div class="ed-flow-paired" aria-label="Search flow steps">
+            <div class="flow-step">
+              <span class="flow-num">1</span>
+              <div class="flow-step__body">
+                <div class="flow-step__copy">
+                  <strong>Open Stationary Pointer and tap Search</strong>
+                  <p>
+                    From the Mock Loc home screen, open <strong>Stationary Pointer</strong>. In the
+                    history tray action row, tap the <strong>Search</strong> chip. A full-screen
+                    search page opens with a field that says <strong>Search here</strong>.
+                  </p>
+                </div>
+                <figure class="ed-step-shot flow-step__shot" id="shot-search-1">
+                  <div class="ed-phone ed-phone--step">
+                    <div class="ed-phone__screen">
+                      <img
+                        src="assets/search/01-tray-search.png"
+                        alt="Stationary Pointer history tray with the Search chip highlighted">
+                    </div>
+                  </div>
+                </figure>
+              </div>
+            </div>
+
+            <div class="flow-step">
+              <span class="flow-num">2</span>
+              <div class="flow-step__body">
+                <div class="flow-step__copy">
+                  <strong>Type a query and pick a result</strong>
+                  <p>
+                    Start typing a place name or address. After two characters, Mock Loc looks up
+                    suggestions. While it works you may see <strong>Searching places...</strong>, then
+                    a list of matching results. Tap the place you want — if needed, Mock Loc briefly
+                    shows <strong>Fetching place details...</strong> before returning to the map.
+                  </p>
+                </div>
+                <figure class="ed-step-shot flow-step__shot" id="shot-search-2">
+                  <div class="ed-phone ed-phone--step">
+                    <div class="ed-phone__screen">
+                      <img
+                        src="assets/search/02-results.png"
+                        alt="Search screen showing India Gate results with place names and addresses">
+                    </div>
+                  </div>
+                </figure>
+              </div>
+            </div>
+
+            <div class="flow-step">
+              <span class="flow-num">3</span>
+              <div class="flow-step__body">
+                <div class="flow-step__copy">
+                  <strong>Confirm and tap Mock</strong>
+                  <p>
+                    A bottom sheet titled <strong>Mock [place name]</strong> shows the selected place
+                    and its coordinates. Tap <strong>Mock</strong> to start. Tap <strong>Cancel</strong>
+                    if you picked the wrong place — the map and history tray go back to how they were.
+                  </p>
+                </div>
+                <figure class="ed-step-shot flow-step__shot" id="shot-search-3">
+                  <div class="ed-phone ed-phone--step">
+                    <div class="ed-phone__screen">
+                      <img
+                        src="assets/search/03-confirm-mock.png"
+                        alt="Mock India Gate confirmation sheet with selected place, coordinates, and Mock button">
+                    </div>
+                  </div>
+                </figure>
+              </div>
+            </div>
+
+            <div class="flow-step">
+              <span class="flow-num">4</span>
+              <div class="flow-step__body">
+                <div class="flow-step__copy">
+                  <strong>Mocking runs until you stop</strong>
+                  <p>
+                    Mock Loc saves the place to your stationary history (if it is new), starts the
+                    player, and keeps reporting those coordinates until you tap <strong>Stop</strong>
+                    from the player bar or notification.
+                  </p>
+                </div>
+                <figure class="ed-step-shot flow-step__shot" id="shot-search-4">
+                  <div class="ed-phone ed-phone--step">
+                    <div class="ed-phone__screen">
+                      <img
+                        src="assets/search/04-active-mock.png"
+                        alt="Active stationary mock at India Gate with mocking location player bar and LIVE indicator">
+                    </div>
+                  </div>
+                </figure>
+              </div>
+            </div>
+          </div>
+
+          <div class="detail-block detail-block--green">
+            <h3>Cancel vs tap outside the sheet</h3>
+            <ul>
+              <li><strong>Cancel</strong> — undoes the selection and restores the previous map and tray.</li>
+              <li><strong>Tap outside</strong> the sheet — keeps the place on the map and shows a floating pin with a <strong>Play</strong> button so you can start mocking later.</li>
+            </ul>
+            <div class="chip-row">
+              <span class="chip chip--green">Search</span>
+              <span class="chip chip--green">Pick result</span>
+              <span class="chip chip--green">Tap Mock</span>
+              <span class="chip chip--green">Active player</span>
+            </div>
+          </div>
+        </section>
+
+        <section id="after-mock">
+          <h2>What happens after you tap Mock</h2>
+          <p>
+            Mock Loc saves the place to your stationary history (if it is new), starts the
+            stationary player, and keeps reporting those coordinates to other apps until you stop.
+          </p>
+          <div class="detail-block detail-block--blue">
+            <h3>While mocking is running</h3>
+            <ul>
+              <li>The map marker <strong>pulses</strong> to show the active mock.</li>
+              <li>The history tray hides so the map stays clear.</li>
+              <li>Use the player bar or the notification to <strong>Stop</strong>.</li>
+              <li>Other apps read the mocked coordinates, not your physical location.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section id="tips">
+          <h2>Quick tips</h2>
+          <div class="detail-block detail-block--yellow">
+            <h3>Get better results</h3>
+            <ul>
+              <li><strong>Type clearly</strong> — two or more characters are required before search runs.</li>
+              <li><strong>Use recent searches</strong> — previously selected places appear at the top when the field is empty.</li>
+              <li><strong>Pick a different spot than where you stand</strong> — if the place matches your real GPS, Mock Loc may refuse to simulate it.</li>
+              <li><strong>Stop other mocks first</strong> — Search will not open a new session while stationary playback is already running.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section id="troubleshooting">
+          <h2>Troubleshooting</h2>
+
+          <h3>Search does nothing when I tap it</h3>
+          <p>Stop any active stationary mock first. Search is disabled while a player session is already running.</p>
+
+          <h3>No places found</h3>
+          <p>
+            Try another spelling or a shorter keyword. Check that you are online. The empty state
+            message is: <em>Try another keyword or check the spelling.</em>
+          </p>
+
+          <h3>Other apps still show my real location</h3>
+          <p>
+            Confirm Mock Loc is selected under Developer options →
+            <strong>Select mock location app</strong>, and that you tapped <strong>Mock</strong>
+            (not only Cancel). Force-close the other app and reopen it after the mock starts.
+          </p>
+
+          <div class="mi-related">
+            <a class="mi-related__card" href="stationary-pointer-nearby.html">
+              <span class="mi-related__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M12 21s7-5.2 7-11a7 7 0 1 0-14 0c0 5.8 7 11 7 11z"></path><circle cx="12" cy="10" r="2.2"></circle></svg>
+              </span>
+              <div>
+                <p class="mi-related__title">Prefer browsing nearby?</p>
+                <p class="mi-related__text">How Nearby works →</p>
+              </div>
+            </a>
+            <a class="mi-related__card" href="stationary-pointer-manual-input.html">
+              <span class="mi-related__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"></rect><path d="M7 9h2M12 9h2M17 9h0.01M7 13h2M12 13h2M17 13h0.01M7 17h10"></path></svg>
+              </span>
+              <div>
+                <p class="mi-related__title">Have exact coordinates?</p>
+                <p class="mi-related__text">How Manual input works →</p>
+              </div>
+            </a>
+          </div>
+        </section>
+      </article>
+    </div>
+
+    <section class="ed-footer-cta" aria-labelledby="search-footer-cta">
+      <div class="ed-footer-cta__inner">
+        <h2 id="search-footer-cta">Need another way to place a pin?</h2>
+        <p>
+          Search is best when you know the name. For raw coordinates use Manual, or browse categories
+          with Nearby.
+        </p>
+        <div class="ed-footer-cta__actions">
+          <a class="ed-btn ed-btn--dark" href="stationary-pointer-manual-input.html">Explore Manual →</a>
+          <a class="ed-btn ed-btn--ghost" href="index.html">All articles</a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="article-footer">
+      <p><a href="index.html">← Back to all MockLoc articles</a></p>
+      <p style="margin-top: 0.5rem;">&copy; MockLoc · Hosted on GitHub Pages</p>
+    </footer>
+
+    <div class="read-progress" aria-hidden="true">
+      <div class="read-progress__bar" id="readProgressBar"></div>
+    </div>
+  </div>
+  <script src="js/article.js?v=20260712-ed23"></script>
+  <script>
+    (function () {
+      var page = document.querySelector(".article-page--editorial");
+      if (!page) return;
+      var onScroll = function () {
+        page.classList.toggle("is-scrolled", window.scrollY > 12);
+      };
+      onScroll();
+      window.addEventListener("scroll", onScroll, { passive: true });
+    })();
+  </script>
+</body>
+</html>

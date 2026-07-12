@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Learn how Manual input works in Mock Loc Stationary Pointer — enter latitude and longitude with the on-screen keypad, plot the point, and mock it.">
+  <title>Stationary Pointer Manual Input — Enter Latitude &amp; Longitude</title>
+  <script>
+    (function () {
+      try {
+        var isPhone =
+          window.matchMedia('(max-width: 900px)').matches ||
+          /Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+        var meta = document.querySelector('meta[name="viewport"]');
+        if (!meta) return;
+
+        if (isPhone) {
+          /* Phones always open in native responsive mobile view */
+          meta.setAttribute('content', 'width=device-width, initial-scale=1.0');
+          sessionStorage.setItem('ed-view-mode', 'mobile');
+          sessionStorage.setItem('ed-phone-ui', '1');
+        } else if (sessionStorage.getItem('ed-view-mode') === 'desktop') {
+          meta.setAttribute('content', 'width=1100');
+          document.documentElement.classList.add('ed-force-desktop');
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/article.css?v=20260712-ed24">
+  <link rel="stylesheet" href="css/editorial.css?v=20260712-ed24">
+</head>
+<body>
+  <div class="article-page article-page--map-input article-page--editorial">
+    <div class="ed-header-band">
+      <header class="ed-header-bar">
+        <div class="ed-header-bar__inner">
+          <a class="back-link" href="index.html">← All articles</a>
+          <a class="ed-brand" href="index.html" aria-label="Mock-Loc home">
+            <img
+              class="ed-brand__logo"
+              src="assets/logo_statement.png"
+              alt="Mock-Loc — Your Location Testing Buddy"
+              width="640"
+              height="120">
+          </a>
+          <span class="ed-header-bar__spacer" aria-hidden="true"></span>
+        </div>
+      </header>
+
+      <section class="ed-hero" aria-labelledby="manual-hero-title">
+        <div class="ed-hero__inner">
+          <div class="ed-hero__copy">
+            <span class="ed-kicker">Stationary Pointer · Manual</span>
+            <h1 id="manual-hero-title">Enter exact coordinates and mock them</h1>
+            <p class="ed-hero__lead">
+              Already have a latitude and longitude? Use <strong>Manual</strong> in Stationary Pointer.
+              Type the pair with the on-screen keypad, plot the point on the map, then tap
+              <strong>Play</strong> to hold your GPS there.
+            </p>
+          </div>
+
+          <figure class="ed-hero__device" id="shot-manual-hero">
+            <div class="ed-phone">
+              <div class="ed-phone__screen">
+                <img
+                  src="assets/manual/00-hero-manual.png"
+                  alt="Manual input dialog — enter latitude and longitude with the on-screen keypad in Mock Loc">
+              </div>
+            </div>
+            <figcaption class="ed-hero__device-caption">
+              Manual input — latitude &amp; longitude dialog
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+    </div>
+
+    <div class="layout">
+      <article class="content">
+        <section id="when-to-use">
+          <h2>When Manual is the right choice</h2>
+          <p>
+            Manual is for precision. Use it when someone sent you coordinates, you copied them from
+            a spreadsheet or ticket, or you need a point that is hard to find by name on the map.
+          </p>
+
+          <ol class="mi-steps" aria-label="Why Manual works well">
+            <li class="mi-steps__item">
+              <span class="mi-steps__icon" aria-hidden="true">
+                <span class="mi-steps__num">1</span>
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <circle cx="12" cy="12" r="3"></circle>
+                  <path d="M12 2v3M12 19v3M2 12h3M19 12h3"></path>
+                </svg>
+              </span>
+              <div class="mi-steps__body">
+                <h3 class="mi-steps__title">Exact spot</h3>
+                <p class="mi-steps__text">
+                  Drop a pin at a known <code>lat, lng</code> without searching or browsing categories.
+                </p>
+              </div>
+            </li>
+            <li class="mi-steps__item">
+              <span class="mi-steps__icon" aria-hidden="true">
+                <span class="mi-steps__num">2</span>
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <rect x="3" y="4" width="18" height="16" rx="2"></rect>
+                  <path d="M7 9h2M12 9h2M17 9h0.01M7 13h2M12 13h2M17 13h0.01M7 17h10"></path>
+                </svg>
+              </span>
+              <div class="mi-steps__body">
+                <h3 class="mi-steps__title">On-screen keypad</h3>
+                <p class="mi-steps__text">
+                  Digits, decimal, comma, backspace, and Clear — built for coordinate entry.
+                </p>
+              </div>
+            </li>
+            <li class="mi-steps__item">
+              <span class="mi-steps__icon" aria-hidden="true">
+                <span class="mi-steps__num">3</span>
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M12 21s7-5.2 7-11a7 7 0 1 0-14 0c0 5.8 7 11 7 11z"></path>
+                  <circle cx="12" cy="10" r="2.2"></circle>
+                </svg>
+              </span>
+              <div class="mi-steps__body">
+                <h3 class="mi-steps__title">Plot, then Play</h3>
+                <p class="mi-steps__text">
+                  <strong>Plot on map</strong> places the pin. Tap <strong>Play</strong> on the callout when ready.
+                </p>
+              </div>
+            </li>
+          </ol>
+
+          <div class="intro-box">
+            <p>
+              <strong>Quick comparison:</strong> Use <strong>Manual</strong> for raw coordinates.
+              Use <strong>Search</strong> for names and addresses. Use <strong>Nearby</strong> to
+              browse categories around a pin. Use a <strong>long press</strong> when you can see the
+              place on the map.
+            </p>
+          </div>
+        </section>
+
+        <section id="prerequisites">
+          <h2>Before you begin</h2>
+          <div class="detail-block detail-block--yellow">
+            <h3>Checklist</h3>
+            <ul>
+              <li>
+                Mock Loc set up as your mock location app.
+                <a href="mock-loc-android-setup-quick-start.html">Quick start →</a>
+              </li>
+              <li><strong>Coordinates ready</strong> — latitude and longitude separated by a comma.</li>
+              <li><strong>No mock already running</strong> — stop any active stationary session first; Manual is ignored while playback is active.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section id="steps" class="ed-steps-showcase">
+          <div class="ed-steps-showcase__intro">
+            <h2>How Manual input works</h2>
+            <p class="ed-steps-showcase__lead">
+              From opening the Manual chip to tapping <strong>Play</strong> on your plotted pin —
+              follow each step below. Screenshots sit beside the instructions and alternate sides
+              as you scroll.
+            </p>
+          </div>
+
+          <div class="ed-showcase-steps" aria-label="Manual input flow steps">
+            <article class="ed-showcase-step ed-showcase-step--left" id="shot-manual-1">
+              <div class="ed-showcase-step__inner">
+                <figure class="ed-showcase-step__media">
+                  <div class="ed-phone ed-phone--showcase">
+                    <div class="ed-phone__screen">
+                      <img
+                        src="assets/manual/01-tray-manual.png"
+                        alt="Stationary Pointer tray with the Manual chip highlighted"
+                        width="1080"
+                        height="608"
+                        loading="lazy">
+                    </div>
+                  </div>
+                </figure>
+                <div class="ed-showcase-step__copy">
+                  <span class="ed-showcase-step__label">Step 1</span>
+                  <h3 class="ed-showcase-step__title">Open Stationary Pointer</h3>
+                  <p class="ed-showcase-step__text">
+                    From the Mock Loc home screen, open <strong>Stationary Pointer</strong>. In the
+                    bottom tray action row, tap <strong>Manual</strong> to start entering coordinates.
+                  </p>
+                </div>
+              </div>
+            </article>
+
+            <article class="ed-showcase-step ed-showcase-step--right" id="shot-manual-2">
+              <div class="ed-showcase-step__inner">
+                <figure class="ed-showcase-step__media">
+                  <div class="ed-phone ed-phone--showcase">
+                    <div class="ed-phone__screen">
+                      <img
+                        src="assets/manual/02-dialog-empty.png"
+                        alt="Empty Input latitude and longitude dialog with keypad"
+                        width="1080"
+                        height="608"
+                        loading="lazy">
+                    </div>
+                  </div>
+                </figure>
+                <div class="ed-showcase-step__copy">
+                  <span class="ed-showcase-step__label">Step 2</span>
+                  <h3 class="ed-showcase-step__title">Open the coordinate dialog</h3>
+                  <p class="ed-showcase-step__text">
+                    A dialog titled <strong>Input latitude &amp; longitude</strong> appears, with the
+                    subtitle <em>Plot a point on the map without searching</em>. The hint shows
+                    <strong>latitude, longitude</strong> and the on-screen keypad is ready below.
+                  </p>
+                </div>
+              </div>
+            </article>
+
+            <article class="ed-showcase-step ed-showcase-step--left" id="shot-manual-3">
+              <div class="ed-showcase-step__inner">
+                <figure class="ed-showcase-step__media">
+                  <div class="ed-phone ed-phone--showcase">
+                    <div class="ed-phone__screen">
+                      <img
+                        src="assets/manual/03-dialog-filled.png"
+                        alt="Dialog with coordinates filled in, ready to plot on map"
+                        width="1080"
+                        height="608"
+                        loading="lazy">
+                    </div>
+                  </div>
+                </figure>
+                <div class="ed-showcase-step__copy">
+                  <span class="ed-showcase-step__label">Step 3</span>
+                  <h3 class="ed-showcase-step__title">Enter coordinates with the keypad</h3>
+                  <p class="ed-showcase-step__text">
+                    Type latitude, a comma, then longitude — for example
+                    <code>28.632977, 77.281263</code>. Use the decimal key for fractions, backspace to
+                    fix a digit, or <strong>Clear</strong> to start over. Tap <strong>X</strong> to
+                    cancel without changes.
+                  </p>
+                </div>
+              </div>
+            </article>
+
+            <article class="ed-showcase-step ed-showcase-step--right ed-showcase-step--compact" id="shot-manual-4">
+              <div class="ed-showcase-step__inner ed-showcase-step__inner--solo">
+                <div class="ed-showcase-step__copy">
+                  <span class="ed-showcase-step__label">Step 4</span>
+                  <h3 class="ed-showcase-step__title">Tap Plot on map</h3>
+                  <p class="ed-showcase-step__text">
+                    When the pair looks right, tap <strong>Plot on map</strong>. The dialog closes,
+                    the map pans to those coordinates, and a marker appears at the exact spot you entered.
+                  </p>
+                </div>
+              </div>
+            </article>
+
+            <article class="ed-showcase-step ed-showcase-step--right" id="shot-manual-5">
+              <div class="ed-showcase-step__inner">
+                <figure class="ed-showcase-step__media">
+                  <div class="ed-phone ed-phone--showcase">
+                    <div class="ed-phone__screen">
+                      <img
+                        src="assets/manual/04-play-pin.png"
+                        alt="Map callout titled Manual with Play button after plotting coordinates"
+                        width="1080"
+                        height="608"
+                        loading="lazy">
+                    </div>
+                  </div>
+                </figure>
+                <div class="ed-showcase-step__copy">
+                  <span class="ed-showcase-step__label">Step 5</span>
+                  <h3 class="ed-showcase-step__title">Tap Play on the floating pin</h3>
+                  <p class="ed-showcase-step__text">
+                    A map callout labeled <strong>Manual</strong> shows
+                    <em>Coordinates entered manually</em>, the values you typed, and a
+                    <strong>Play</strong> button. Tap <strong>Play</strong> to start mocking — the
+                    point is saved to history when playback begins.
+                  </p>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section id="dialog">
+          <h2>Every control in the dialog</h2>
+          <p>
+            Here is what each part of <strong>Input latitude &amp; longitude</strong> does:
+          </p>
+
+          <div class="ed-controls" aria-label="Dialog controls">
+            <div class="ed-control ed-control--rose">
+              <span class="ed-control__key">X</span>
+              <div>
+                <p class="ed-control__name">Close</p>
+                <p class="ed-control__desc">Dismiss without changing the map</p>
+              </div>
+            </div>
+            <div class="ed-control ed-control--mint">
+              <span class="ed-control__key">Aa</span>
+              <div>
+                <p class="ed-control__name">Coordinate field</p>
+                <p class="ed-control__desc">Shows what you typed — <strong>lat, lng</strong></p>
+              </div>
+            </div>
+            <div class="ed-control ed-control--sky">
+              <span class="ed-control__key">0–9</span>
+              <div>
+                <p class="ed-control__name">Digits</p>
+                <p class="ed-control__desc">Append numbers to the field</p>
+              </div>
+            </div>
+            <div class="ed-control ed-control--amber">
+              <span class="ed-control__key">.</span>
+              <div>
+                <p class="ed-control__name">Decimal</p>
+                <p class="ed-control__desc">Adds a decimal in the current number</p>
+              </div>
+            </div>
+            <div class="ed-control ed-control--violet">
+              <span class="ed-control__key">,</span>
+              <div>
+                <p class="ed-control__name">Comma</p>
+                <p class="ed-control__desc">Separates latitude from longitude</p>
+              </div>
+            </div>
+            <div class="ed-control ed-control--coral">
+              <span class="ed-control__key">←</span>
+              <div>
+                <p class="ed-control__name">Backspace</p>
+                <p class="ed-control__desc">Deletes the last character</p>
+              </div>
+            </div>
+            <div class="ed-control ed-control--lime">
+              <span class="ed-control__key">CLR</span>
+              <div>
+                <p class="ed-control__name">Clear</p>
+                <p class="ed-control__desc">Erase everything and start again</p>
+              </div>
+            </div>
+            <div class="ed-control ed-control--teal">
+              <span class="ed-control__key">▶</span>
+              <div>
+                <p class="ed-control__name">Plot on map</p>
+                <p class="ed-control__desc">Validate, close, and place the pin</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="ed-note ed-note--sky">
+            <p class="ed-note__title">After Plot on map</p>
+            <p>
+              No Mock bottom sheet here — tap <strong>Play</strong> on the floating pin to start.
+              History saves when mocking begins.
+            </p>
+          </div>
+        </section>
+
+        <section id="format">
+          <h2>Coordinate format</h2>
+          <div class="detail-block detail-block--green">
+            <h3>Use this pattern</h3>
+            <ul>
+              <li>Write <strong>latitude first</strong>, then a <strong>comma</strong>, then <strong>longitude</strong>.</li>
+              <li>Example shown in the app: <code>28.632977, 77.281263</code></li>
+              <li>Only <strong>one comma</strong> between the two numbers.</li>
+              <li>Each number may include at most <strong>one decimal point</strong>.</li>
+            </ul>
+            <div class="chip-row">
+              <span class="chip chip--green">lat, lng</span>
+              <span class="chip chip--green">One comma</span>
+              <span class="chip chip--green">Plot on map</span>
+              <span class="chip chip--green">Play</span>
+            </div>
+          </div>
+        </section>
+
+        <section id="tips">
+          <h2>Quick tips</h2>
+          <div class="detail-block detail-block--yellow">
+            <h3>Enter coordinates cleanly</h3>
+            <ul>
+              <li><strong>Double-check the order</strong> — latitude comes before longitude.</li>
+              <li><strong>Use Clear</strong> if the field gets messy instead of fighting backspace.</li>
+              <li><strong>Pick a different spot than where you stand</strong> — mocking your exact real GPS may be blocked.</li>
+              <li><strong>Stop other mocks first</strong> — Manual will not open while stationary playback is already running.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section id="troubleshooting">
+          <h2>Troubleshooting</h2>
+
+          <h3>Manual does nothing when I tap it</h3>
+          <p>
+            Stop any active stationary mock first. The Manual chip is ignored while a player session
+            is already running.
+          </p>
+
+          <h3>“Please Enter correct lat-long”</h3>
+          <p>
+            Make sure you included a comma between latitude and longitude, and that both sides have
+            a number. Empty input will also be rejected.
+          </p>
+
+          <h3>Pin appears but mocking does not start</h3>
+          <p>
+            After <strong>Plot on map</strong>, you still need to tap <strong>Play</strong> on the
+            floating Manual pin. Plotting alone only places the marker.
+          </p>
+
+          <h3>Other apps still show my real location</h3>
+          <p>
+            Confirm Mock Loc is selected under Developer options →
+            <strong>Select mock location app</strong>, and that the player shows an active session.
+            Force-close the other app and reopen it after Play.
+          </p>
+
+          <div class="mi-related">
+            <a class="mi-related__card" href="stationary-pointer-search.html">
+              <span class="mi-related__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"></circle><path d="M16.5 16.5L21 21"></path></svg>
+              </span>
+              <div>
+                <p class="mi-related__title">Prefer searching by name?</p>
+                <p class="mi-related__text">How Search works →</p>
+              </div>
+            </a>
+            <a class="mi-related__card" href="stationary-pointer-nearby.html">
+              <span class="mi-related__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M12 21s7-5.2 7-11a7 7 0 1 0-14 0c0 5.8 7 11 7 11z"></path><circle cx="12" cy="10" r="2.2"></circle></svg>
+              </span>
+              <div>
+                <p class="mi-related__title">Want to browse nearby?</p>
+                <p class="mi-related__text">How Nearby works →</p>
+              </div>
+            </a>
+          </div>
+        </section>
+      </article>
+    </div>
+
+    <section class="ed-footer-cta" aria-labelledby="manual-footer-cta">
+      <div class="ed-footer-cta__inner">
+        <h2 id="manual-footer-cta">Need another way to place a pin?</h2>
+        <p>
+          Manual shines with exact coordinates. If you only know a place name — or want to browse
+          what’s around a spot — try Search or Nearby instead.
+        </p>
+        <div class="ed-footer-cta__actions">
+          <a class="ed-btn ed-btn--dark" href="stationary-pointer-search.html">Explore Search →</a>
+          <a class="ed-btn ed-btn--ghost" href="index.html">All articles</a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="article-footer">
+      <p><a href="index.html">← Back to all MockLoc articles</a></p>
+      <p style="margin-top: 0.5rem;">&copy; MockLoc · Hosted on GitHub Pages</p>
+    </footer>
+
+    <div class="read-progress" aria-hidden="true">
+      <div class="read-progress__bar" id="readProgressBar"></div>
+    </div>
+  </div>
+  <script src="js/article.js?v=20260712-ed21"></script>
+  <script>
+    (function () {
+      var page = document.querySelector(".article-page--editorial");
+      if (!page) return;
+      var onScroll = function () {
+        page.classList.toggle("is-scrolled", window.scrollY > 12);
+      };
+      onScroll();
+      window.addEventListener("scroll", onScroll, { passive: true });
+    })();
+  </script>
+</body>
+</html>

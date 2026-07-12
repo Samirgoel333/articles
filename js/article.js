@@ -17,10 +17,177 @@
   window.addEventListener('resize', updateReadProgress);
   updateReadProgress();
 
+  function initTocPager() {
+    var pager = document.querySelector('.article-page--map-input .toc.toc--pager');
+    if (!pager) {
+      return;
+    }
+
+    var links = pager.querySelectorAll('a[href^="#"]');
+    if (!links.length) {
+      return;
+    }
+
+    var tracked = [];
+    links.forEach(function (link) {
+      var id = link.getAttribute('href').slice(1);
+      var section = document.getElementById(id);
+      if (section) {
+        tracked.push({ link: link, section: section });
+      }
+    });
+
+    if (!tracked.length) {
+      return;
+    }
+
+    function setActive(activeLink) {
+      links.forEach(function (link) {
+        link.classList.toggle('is-active', link === activeLink);
+      });
+
+      if (activeLink && typeof activeLink.scrollIntoView === 'function') {
+        activeLink.scrollIntoView({
+          behavior: 'smooth',
+          inline: 'center',
+          block: 'nearest'
+        });
+      }
+    }
+
+    function updateActive() {
+      var current = tracked[0];
+      var marker = window.innerHeight * 0.28;
+      tracked.forEach(function (item) {
+        if (item.section.getBoundingClientRect().top <= marker) {
+          current = item;
+        }
+      });
+      setActive(current.link);
+    }
+
+    window.addEventListener('scroll', updateActive, { passive: true });
+    window.addEventListener('resize', updateActive);
+    updateActive();
+  }
+
+  function isPhoneDevice() {
+    return (
+      window.matchMedia('(max-width: 900px)').matches ||
+      /Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+    );
+  }
+
+  function isEditorialPhoneSession() {
+    var page = document.querySelector('.article-page--editorial');
+    if (!page) {
+      return false;
+    }
+
+    try {
+      if (sessionStorage.getItem('ed-phone-ui') === '1') {
+        return true;
+      }
+    } catch (e) {}
+
+    if (isPhoneDevice()) {
+      try {
+        sessionStorage.setItem('ed-phone-ui', '1');
+      } catch (e) {}
+      return true;
+    }
+
+    return false;
+  }
+
+  function getViewportMeta() {
+    return document.querySelector('meta[name="viewport"]');
+  }
+
+  function setDesktopView(enabled) {
+    var meta = getViewportMeta();
+    if (meta) {
+      meta.setAttribute(
+        'content',
+        enabled ? 'width=1100' : 'width=device-width, initial-scale=1.0'
+      );
+    }
+
+    root.classList.toggle('ed-force-desktop', enabled);
+
+    try {
+      sessionStorage.setItem('ed-view-mode', enabled ? 'desktop' : 'mobile');
+    } catch (e) {}
+  }
+
+  function initViewToggle() {
+    var page = document.querySelector('.article-page--editorial');
+    if (!page || document.querySelector('.view-toggle-fab')) {
+      return;
+    }
+
+    if (!isEditorialPhoneSession()) {
+      return;
+    }
+
+    page.classList.add('has-view-toggle');
+
+    /* Ensure phones start in responsive mobile view on each load */
+    if (!root.classList.contains('ed-force-desktop')) {
+      setDesktopView(false);
+    }
+
+    var desktopOn = root.classList.contains('ed-force-desktop');
+
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'view-toggle-fab';
+    btn.setAttribute('aria-pressed', desktopOn ? 'true' : 'false');
+
+    function renderLabel() {
+      var on = root.classList.contains('ed-force-desktop');
+      btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+      btn.setAttribute(
+        'aria-label',
+        on ? 'Switch to mobile view' : 'Switch to desktop view'
+      );
+      btn.innerHTML =
+        '<span class="view-toggle-fab__icon" aria-hidden="true">' +
+        (on
+          ? '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg>'
+          : '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="14" rx="2"/><path d="M8 21h8M12 18v3"/></svg>') +
+        '</span>' +
+        '<span class="view-toggle-fab__label">' +
+        (on ? 'Mobile' : 'Desktop') +
+        '</span>';
+    }
+
+    renderLabel();
+
+    btn.addEventListener('click', function () {
+      var next = !root.classList.contains('ed-force-desktop');
+      setDesktopView(next);
+      renderLabel();
+      window.dispatchEvent(new Event('resize'));
+    });
+
+    page.appendChild(btn);
+  }
+
   function initMobileToc() {
+    if (document.querySelector('.article-page--editorial')) {
+      return;
+    }
+
+    // Map-input pager TOC already works on mobile — skip FAB.
+    if (document.querySelector('.article-page--map-input .toc.toc--pager')) {
+      return;
+    }
+
     var mobileQuery = window.matchMedia('(max-width: 900px)');
     var sourceToc = document.querySelector('.layout .toc');
-    if (!sourceToc || !mobileQuery.matches || document.querySelector('.toc-fab')) {
+
+    if (!sourceToc || document.querySelector('.toc-fab') || !mobileQuery.matches) {
       return;
     }
 
@@ -39,6 +206,7 @@
     fab.className = 'toc-fab';
     fab.setAttribute('aria-expanded', 'false');
     fab.setAttribute('aria-controls', 'tocMobilePanel');
+    fab.setAttribute('aria-label', 'Open page index');
     fab.innerHTML =
       '<span class="toc-fab__icon" aria-hidden="true">☰</span>' +
       '<span class="toc-fab__label">On this page</span>';
@@ -156,9 +324,15 @@
     updateActiveSection();
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initMobileToc);
-  } else {
+  function boot() {
+    initViewToggle();
+    initTocPager();
     initMobileToc();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', boot);
+  } else {
+    boot();
   }
 })();
