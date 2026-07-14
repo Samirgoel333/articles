@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Control Mock Loc Stationary Pointer, Playlist, and Auto Itinerary from a floating overlay player while you use other apps — and learn how to turn it on or hide it anytime.">
+  <title>Floating Overlay Player — Control Mocking Over Other Apps</title>
+  <script>
+    (function () {
+      try {
+        var isPhone =
+          window.matchMedia('(max-width: 900px)').matches ||
+          /Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+        var meta = document.querySelector('meta[name="viewport"]');
+        if (!meta) return;
+
+        if (isPhone) {
+          meta.setAttribute('content', 'width=device-width, initial-scale=1.0');
+          sessionStorage.setItem('ed-view-mode', 'mobile');
+          sessionStorage.setItem('ed-phone-ui', '1');
+        } else if (sessionStorage.getItem('ed-view-mode') === 'desktop') {
+          meta.setAttribute('content', 'width=1100');
+          document.documentElement.classList.add('ed-force-desktop');
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/article.css?v=20260714-overlay1">
+  <link rel="stylesheet" href="css/editorial.css?v=20260714-overlay1">
+</head>
+<body>
+  <div class="article-page article-page--map-input article-page--editorial article-page--overlay">
+    <div class="ed-header-band">
+      <header class="ed-header-bar">
+        <div class="ed-header-bar__inner">
+          <a class="back-link" href="index.html">← All articles</a>
+          <a class="ed-brand" href="index.html" aria-label="Mock-Loc home">
+            <img
+              class="ed-brand__logo"
+              src="assets/logo_statement.png"
+              alt="Mock-Loc — Your Location Testing Buddy"
+              width="640"
+              height="120">
+          </a>
+          <span class="ed-header-bar__spacer" aria-hidden="true"></span>
+        </div>
+      </header>
+
+      <section class="ed-hero" aria-labelledby="overlay-hero-title">
+        <div class="ed-hero__inner">
+          <div class="ed-hero__copy">
+            <span class="ed-kicker">Floating player · Overlay</span>
+            <h1 id="overlay-hero-title">Stay in control while Mock Loc runs over other apps</h1>
+            <p class="ed-hero__lead">
+              Start a Stationary, Playlist, or Auto Itinerary mock, leave Mock Loc, and keep a
+              beautiful floating player on screen. Pause, skip, stop, or jump back into the module —
+              without digging through notifications every time.
+            </p>
+          </div>
+
+          <figure class="ed-hero__device" id="shot-overlay-hero">
+            <div class="ed-phone">
+              <div class="ed-phone__screen">
+                <div class="shot-placeholder" role="img" aria-label="Screenshot placeholder for floating overlay hero">
+                  <span class="shot-placeholder__label">Replace later</span>
+                  <p class="shot-placeholder__title">Hero — overlay over another app</p>
+                  <p class="shot-placeholder__hint">
+                    Capture a full phone screenshot while mocking is live and Mock Loc is in the
+                    background. Show the floating player card (with red close badge) sitting over a
+                    familiar app such as Maps or Chrome.
+                  </p>
+                  <p class="shot-placeholder__file">assets/overlay/00-hero-floating-player.png</p>
+                </div>
+              </div>
+            </div>
+            <figcaption class="ed-hero__device-caption">
+              Floating player — control mocking without returning to Mock Loc
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+    </div>
+
+    <div class="layout">
+      <article class="content">
+        <section id="why-it-matters">
+          <h2>Why testers love the floating player</h2>
+          <p>
+            Real location tests rarely stay inside Mock Loc. You open Maps, a ride app, or your own
+            build — and you still need play, pause, next pin, or stop within reach. The floating
+            overlay player is built for that moment.
+          </p>
+
+          <div class="benefit-grid" aria-label="Benefits of the floating overlay player">
+            <article class="benefit-card">
+              <span class="benefit-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="14" rx="2"></rect><path d="M8 9h8M8 13h5"></path></svg>
+              </span>
+              <h3>Stay in the app under test</h3>
+              <p>Leave Mock Loc in the background and keep mocking controls visible on top of other apps.</p>
+            </article>
+            <article class="benefit-card">
+              <span class="benefit-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"></circle><path d="M10 9.5v5l4.5-2.5z"></path></svg>
+              </span>
+              <h3>Faster play &amp; pause</h3>
+              <p>Hit play, pause, or stop from the card instead of hunting for the sticky notification.</p>
+            </article>
+            <article class="benefit-card">
+              <span class="benefit-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M4 7h10M4 12h16M4 17h8"></path><path d="M16 7l4 0M18 5v4"></path></svg>
+              </span>
+              <h3>Playlist &amp; itinerary aware</h3>
+              <p>Previous / next on playlists, progress and segment names on auto itineraries — matched to each module.</p>
+            </article>
+            <article class="benefit-card">
+              <span class="benefit-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"></circle><path d="M9 9l6 6M15 9l-6 6"></path></svg>
+              </span>
+              <h3>Hide without stopping</h3>
+              <p>Tap the red close badge to clear the card. Mocking keeps running; the player returns the next time you leave the app.</p>
+            </article>
+          </div>
+        </section>
+
+        <section id="what-it-is">
+          <h2>What the floating overlay player is</h2>
+          <p>
+            It is a compact system overlay card that appears <strong>only while Mock Loc is in the
+            background</strong> and a mock session is active. Inside the app you still use the normal
+            in-app player. When you switch away, the floating card takes over so you can keep
+            testing without friction.
+          </p>
+
+          <ol class="mi-steps" aria-label="Where the floating player works">
+            <li class="mi-steps__item">
+              <span class="mi-steps__icon" aria-hidden="true">
+                <span class="mi-steps__num">1</span>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-5.2 7-11a7 7 0 1 0-14 0c0 5.8 7 11 7 11z"></path><circle cx="12" cy="10" r="2.2"></circle></svg>
+              </span>
+              <div class="mi-steps__body">
+                <h3 class="mi-steps__title">Stationary Pointer</h3>
+                <p class="mi-steps__text">Play, pause, stop, favourite, and jump back into the pin you are mocking.</p>
+              </div>
+            </li>
+            <li class="mi-steps__item">
+              <span class="mi-steps__icon" aria-hidden="true">
+                <span class="mi-steps__num">2</span>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h11M4 12h16M4 17h9"></path><path d="M17 6v4M15 8h4"></path></svg>
+              </span>
+              <div class="mi-steps__body">
+                <h3 class="mi-steps__title">Stationary Playlist</h3>
+                <p class="mi-steps__text">Previous / next pin, dwell progress, coordinates badge, and favourite — all from the card.</p>
+              </div>
+            </li>
+            <li class="mi-steps__item">
+              <span class="mi-steps__icon" aria-hidden="true">
+                <span class="mi-steps__num">3</span>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 18V6l7 6 7-6v12"></path></svg>
+              </span>
+              <div class="mi-steps__body">
+                <h3 class="mi-steps__title">Auto Itinerary</h3>
+                <p class="mi-steps__text">Overall progress with segment ticks, plus start and stop names for the current segment.</p>
+              </div>
+            </li>
+          </ol>
+
+          <div class="intro-box">
+            <p>
+              <strong>Good to know:</strong> the overlay never replaces mocking itself. If you skip
+              the display-over-apps permission, or hide the card with ✕, your mock session and sticky
+              notification keep working exactly as before.
+            </p>
+          </div>
+        </section>
+
+        <section id="turn-on">
+          <h2>How to turn the floating player on</h2>
+          <p>
+            Android needs <strong>Display over other apps</strong> (also called Appear on top)
+            permission before Mock Loc can draw the card. Mock Loc asks gently after you start a
+            mock — and you can always skip.
+          </p>
+
+          <div class="ed-flow-paired" aria-label="How to enable the floating overlay">
+            <div class="flow-step">
+              <span class="flow-num">1</span>
+              <div class="flow-step__body">
+                <div class="flow-step__copy">
+                  <strong>Start any mock as usual</strong>
+                  <p>
+                    Open Stationary Pointer, Playlist, or Auto Itinerary and tap <strong>Play</strong>
+                    (or Mock). The in-app player appears while you stay inside Mock Loc.
+                  </p>
+                </div>
+                <figure class="ed-step-shot flow-step__shot" id="shot-overlay-1">
+                  <div class="ed-phone ed-phone--step">
+                    <div class="ed-phone__screen">
+                      <div class="shot-placeholder">
+                        <span class="shot-placeholder__label">Replace later</span>
+                        <p class="shot-placeholder__title">Step 1 — start mocking in-app</p>
+                        <p class="shot-placeholder__hint">
+                          Screenshot of Stationary / Playlist / Itinerary with the in-app player
+                          visible and LIVE / playing state after tapping Play.
+                        </p>
+                        <p class="shot-placeholder__file">assets/overlay/01-start-mock-in-app.png</p>
+                      </div>
+                    </div>
+                  </div>
+                </figure>
+              </div>
+            </div>
+
+            <div class="flow-step">
+              <span class="flow-num">2</span>
+              <div class="flow-step__body">
+                <div class="flow-step__copy">
+                  <strong>Allow “display over other apps” when prompted</strong>
+                  <p>
+                    If permission is missing, Mock Loc shows a short explain dialog. Tap
+                    <strong>Allow</strong> and enable Mock Loc in Android settings. You can
+                    <strong>Skip</strong> anytime — mocking is never blocked. Only check
+                    <strong>Don’t ask me again</strong> if you truly want to stop seeing the prompt.
+                  </p>
+                </div>
+                <figure class="ed-step-shot flow-step__shot" id="shot-overlay-2">
+                  <div class="ed-phone ed-phone--step">
+                    <div class="ed-phone__screen">
+                      <div class="shot-placeholder">
+                        <span class="shot-placeholder__label">Replace later</span>
+                        <p class="shot-placeholder__title">Step 2 — permission dialog</p>
+                        <p class="shot-placeholder__hint">
+                          Screenshot of the Mock Loc floating-player permission dialog (Allow /
+                          Skip + Don’t ask me again checkbox), preferably right after Play.
+                        </p>
+                        <p class="shot-placeholder__file">assets/overlay/02-permission-prompt.png</p>
+                      </div>
+                    </div>
+                  </div>
+                </figure>
+              </div>
+            </div>
+
+            <div class="flow-step">
+              <span class="flow-num">3</span>
+              <div class="flow-step__body">
+                <div class="flow-step__copy">
+                  <strong>Leave Mock Loc — the card appears</strong>
+                  <p>
+                    Press Home or switch to another app. While mocking is still running, the floating
+                    player appears over that app. Drag it from the left handle if you want it out of
+                    the way; Mock Loc remembers the position.
+                  </p>
+                </div>
+                <figure class="ed-step-shot flow-step__shot" id="shot-overlay-3">
+                  <div class="ed-phone ed-phone--step">
+                    <div class="ed-phone__screen">
+                      <div class="shot-placeholder">
+                        <span class="shot-placeholder__label">Replace later</span>
+                        <p class="shot-placeholder__title">Step 3 — player over another app</p>
+                        <p class="shot-placeholder__hint">
+                          Same idea as the hero shot: Mock Loc backgrounded, another app visible,
+                          floating player card clearly readable (drag handle + controls).
+                        </p>
+                        <p class="shot-placeholder__file">assets/overlay/03-overlay-visible.png</p>
+                      </div>
+                    </div>
+                  </div>
+                </figure>
+              </div>
+            </div>
+          </div>
+
+          <div class="detail-block detail-block--yellow">
+            <h3>Turn permission on later from Android</h3>
+            <ul>
+              <li>Open Android <strong>Settings → Apps → Mock Loc → Appear on top / Display over other apps</strong>.</li>
+              <li>Enable the toggle, then leave Mock Loc again while a mock is running.</li>
+              <li>If you previously chose “Don’t ask me again,” use Settings to re-enable the overlay yourself.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section id="using-controls">
+          <h2>Using the player controls</h2>
+          <p>
+            Each module gets a card tailored to that workflow. Controls mirror the sticky notification
+            and in-app player so you never learn a second language.
+          </p>
+
+          <div class="detail-block detail-block--green">
+            <h3>What you can do from the card</h3>
+            <ul>
+              <li><strong>Play / Pause / Stop</strong> — same actions as the notification.</li>
+              <li><strong>Favourite</strong> — stationary and playlist points.</li>
+              <li><strong>Previous / Next</strong> — playlist pins only.</li>
+              <li><strong>Tap the title area</strong> — opens the matching module inside Mock Loc.</li>
+              <li><strong>Drag the handle</strong> — move the card; position is saved.</li>
+            </ul>
+            <div class="chip-row">
+              <span class="chip chip--green">Stationary</span>
+              <span class="chip chip--green">Playlist</span>
+              <span class="chip chip--green">Itinerary</span>
+              <span class="chip chip--green">Draggable</span>
+            </div>
+          </div>
+
+          <figure class="ed-step-shot" id="shot-overlay-controls" style="margin-top: 1.5rem;">
+            <div class="ed-phone ed-phone--step" style="margin: 0 auto;">
+              <div class="ed-phone__screen">
+                <div class="shot-placeholder">
+                  <span class="shot-placeholder__label">Replace later</span>
+                  <p class="shot-placeholder__title">Controls close-up</p>
+                  <p class="shot-placeholder__hint">
+                    Crop or capture a clear close-up of the playlist overlay (progress + lat/lng
+                    badge + prev / play / next / stop) or a side-by-side of all three module cards.
+                  </p>
+                  <p class="shot-placeholder__file">assets/overlay/04-controls-closeup.png</p>
+                </div>
+              </div>
+            </div>
+            <figcaption class="ed-hero__device-caption" style="text-align: center; margin-top: 0.75rem;">
+              Controls match the module you are mocking
+            </figcaption>
+          </figure>
+        </section>
+
+        <section id="turn-off">
+          <h2>How to hide or turn the floating player off</h2>
+          <p>
+            You stay in charge. Hide the card for a moment, or leave the Android permission off if
+            you prefer notification-only control.
+          </p>
+
+          <div class="ed-flow-paired" aria-label="How to hide or disable the floating overlay">
+            <div class="flow-step">
+              <span class="flow-num">1</span>
+              <div class="flow-step__body">
+                <div class="flow-step__copy">
+                  <strong>Hide for now — tap the red ✕</strong>
+                  <p>
+                    The close badge sits on the top-right corner of the card. Tap it to dismiss the
+                    overlay only. <strong>Mocking keeps running.</strong> Open Mock Loc (or any app
+                    that brings Mock Loc to the foreground), then leave again — the player reappears
+                    while the session is still active.
+                  </p>
+                </div>
+                <figure class="ed-step-shot flow-step__shot" id="shot-overlay-hide">
+                  <div class="ed-phone ed-phone--step">
+                    <div class="ed-phone__screen">
+                      <div class="shot-placeholder">
+                        <span class="shot-placeholder__label">Replace later</span>
+                        <p class="shot-placeholder__title">Hide with red close badge</p>
+                        <p class="shot-placeholder__hint">
+                          Screenshot highlighting the red circular ✕ partially outside the top-right
+                          of the floating card. Optional arrow / circle markup is fine.
+                        </p>
+                        <p class="shot-placeholder__file">assets/overlay/05-close-badge.png</p>
+                      </div>
+                    </div>
+                  </div>
+                </figure>
+              </div>
+            </div>
+
+            <div class="flow-step">
+              <span class="flow-num">2</span>
+              <div class="flow-step__body">
+                <div class="flow-step__copy">
+                  <strong>Return to Mock Loc — card auto-hides</strong>
+                  <p>
+                    Opening Mock Loc (launcher icon, notification, or tapping the card title) dismisses
+                    the overlay automatically. Use the normal in-app player while you are inside the app.
+                  </p>
+                </div>
+                <figure class="ed-step-shot flow-step__shot" id="shot-overlay-inapp">
+                  <div class="ed-phone ed-phone--step">
+                    <div class="ed-phone__screen">
+                      <div class="shot-placeholder">
+                        <span class="shot-placeholder__label">Replace later</span>
+                        <p class="shot-placeholder__title">Back inside Mock Loc</p>
+                        <p class="shot-placeholder__hint">
+                          Screenshot of Mock Loc foreground with the in-app player visible and no
+                          system overlay card on top.
+                        </p>
+                        <p class="shot-placeholder__file">assets/overlay/06-back-in-app.png</p>
+                      </div>
+                    </div>
+                  </div>
+                </figure>
+              </div>
+            </div>
+
+            <div class="flow-step">
+              <span class="flow-num">3</span>
+              <div class="flow-step__body">
+                <div class="flow-step__copy">
+                  <strong>Fully disable — turn off Appear on top</strong>
+                  <p>
+                    In Android Settings, disable Mock Loc’s <strong>Appear on top</strong> permission.
+                    Overlay cards will no longer show. Sticky notifications and in-app players still
+                    control mocking. Start a new mock later and allow the permission again if you want
+                    the floating player back.
+                  </p>
+                </div>
+                <figure class="ed-step-shot flow-step__shot" id="shot-overlay-settings">
+                  <div class="ed-phone ed-phone--step">
+                    <div class="ed-phone__screen">
+                      <div class="shot-placeholder">
+                        <span class="shot-placeholder__label">Replace later</span>
+                        <p class="shot-placeholder__title">Android Appear on top</p>
+                        <p class="shot-placeholder__hint">
+                          Screenshot of Android Settings → Apps → Mock Loc → Appear on top / Display
+                          over other apps, with the toggle visible (on or off is fine — label clearly).
+                        </p>
+                        <p class="shot-placeholder__file">assets/overlay/07-android-appear-on-top.png</p>
+                      </div>
+                    </div>
+                  </div>
+                </figure>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="tips">
+          <h2>Quick tips</h2>
+          <div class="detail-block detail-block--yellow">
+            <h3>Get the most from the overlay</h3>
+            <ul>
+              <li><strong>Drag once, reuse forever</strong> — place the card where your thumb likes it; Mock Loc remembers.</li>
+              <li><strong>✕ ≠ Stop</strong> — close only hides the UI; use Stop when you want mocking to end.</li>
+              <li><strong>Permission is optional</strong> — Skip never pauses your mock session.</li>
+              <li><strong>One module at a time</strong> — stop the current mock before starting another module’s session.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section id="troubleshooting">
+          <h2>Troubleshooting</h2>
+
+          <h3>I never see the floating player</h3>
+          <p>
+            Confirm a mock is actually running, then fully leave Mock Loc (Home or recent apps).
+            Check that <strong>Appear on top</strong> is enabled for Mock Loc. Some OEMs bury this
+            under special app access — search for “appear on top” or “display over other apps.”
+          </p>
+
+          <h3>I dismissed the card and it did not come back</h3>
+          <p>
+            After you tap ✕, open Mock Loc once (or bring it to the foreground), then switch away
+            again. The overlay is designed to return on the next background trip while mocking is
+            still active.
+          </p>
+
+          <h3>The red close button opens the module instead</h3>
+          <p>
+            Make sure you are on the latest Mock Loc build. The close badge is meant to sit above the
+            card and only dismiss the overlay. Prefer tapping the center of the red circle.
+          </p>
+
+          <div class="mi-related">
+            <a class="mi-related__card" href="stationary-pointer-search.html">
+              <span class="mi-related__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"></circle><path d="M16.5 16.5L21 21"></path></svg>
+              </span>
+              <div>
+                <p class="mi-related__title">Start a stationary mock</p>
+                <p class="mi-related__text">Search — find a place by name →</p>
+              </div>
+            </a>
+            <a class="mi-related__card" href="enable-developer-options-mock-location-app.html">
+              <span class="mi-related__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M12 3l2.2 4.5L19 8.2l-3.5 3.4.8 4.9L12 14.2 7.7 16.5l.8-4.9L5 8.2l4.8-.7L12 3z"></path></svg>
+              </span>
+              <div>
+                <p class="mi-related__title">First-time setup</p>
+                <p class="mi-related__text">Enable Developer options →</p>
+              </div>
+            </a>
+          </div>
+        </section>
+      </article>
+    </div>
+
+    <section class="ed-footer-cta" aria-labelledby="overlay-footer-cta">
+      <div class="ed-footer-cta__inner">
+        <h2 id="overlay-footer-cta">Ready to test without leaving the app under test?</h2>
+        <p>
+          Start a mock, allow Appear on top once, and keep play / pause / stop within reach —
+          Stationary, Playlist, or Auto Itinerary.
+        </p>
+        <div class="ed-footer-cta__actions">
+          <a class="ed-btn ed-btn--dark" href="stationary-pointer-long-press-quick-start.html">Quick start: long press →</a>
+          <a class="ed-btn ed-btn--ghost" href="index.html">All articles</a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="article-footer">
+      <p><a href="index.html">← Back to all MockLoc articles</a></p>
+      <p style="margin-top: 0.5rem;">&copy; MockLoc · Hosted on GitHub Pages</p>
+    </footer>
+
+    <div class="read-progress" aria-hidden="true">
+      <div class="read-progress__bar" id="readProgressBar"></div>
+    </div>
+  </div>
+  <script src="js/article.js?v=20260714-overlay1"></script>
+  <script>
+    (function () {
+      var page = document.querySelector(".article-page--editorial");
+      if (!page) return;
+      var onScroll = function () {
+        page.classList.toggle("is-scrolled", window.scrollY > 12);
+      };
+      onScroll();
+      window.addEventListener("scroll", onScroll, { passive: true });
+    })();
+  </script>
+</body>
+</html>
